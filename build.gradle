@@ -7,17 +7,48 @@ buildscript {
 
     dependencies {
         classpath 'me.champeau.gradle:jbake-gradle-plugin:0.2'
+        classpath 'org.pegdown:pegdown:1.4.2'
+        classpath 'org.asciidoctor:asciidoctor-java-integration:0.1.4'
 //        classpath 'org.asciidoctor:asciidoctorj:1.5.2'
     }
 }
 
 apply plugin: 'me.champeau.jbake'
+apply plugin: 'idea'
+apply plugin: 'java'
 
 jbake {
     input  = file 'jbake'
+    clearCache = true
+    configuration['render.tag'] = 'true'
 }
 
-task publish(type: GradleBuild) {
-    buildFile = 'publish.gradle'
-    tasks = ['publishGhPages']
+configurations {
+    webjars
+    webjars.extendsFrom(compile)
 }
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    webjars  'org.webjars:jquery:2.1.3'
+}
+
+task('webjars resources extraction', type: Copy) {
+    configurations.webjars.each {jar ->
+        copy {
+            from zipTree(jar)
+            into file("${buildDir}/webjars-content/${jar.name}")
+        }
+        copy {
+            from "${buildDir}/webjars-content/${jar.name}/META-INF/resources/webjars"
+            into "${jbake.input}/vendor"
+        }
+    }
+}
+
+
