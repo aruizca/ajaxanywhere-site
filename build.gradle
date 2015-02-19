@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'me.champeau.gradle:jbake-gradle-plugin:0.2'
+        compile 'org.asciidoctor:asciidoctorj:1.5.2'
+//        classpath 'org.asciidoctor:asciidoctorj:1.5.2'
+    }
+}
+
+apply plugin: 'me.champeau.jbake'
+
+jbake {
+    input  = file 'jbake'
+}
+
+task publish(type: GradleBuild) {
+    buildFile = 'publish.gradle'
+    tasks = ['publishGhPages']
+}
