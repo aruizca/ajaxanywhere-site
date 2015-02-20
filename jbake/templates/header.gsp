@@ -4,9 +4,9 @@
     <meta charset="utf-8"/>
     <title><%if (content.title) {%>${content.title}<% } else { %>JBake<% }%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="AjaxAnywhere main site">
+    <meta name="author" content="Angel Ruiz Calvo">
+    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation">
     <meta name="generator" content="JBake">
 
     <!-- Le styles -->
@@ -17,8 +17,6 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>js/html5shiv.min.js"></script>
-    <![endif]-->
 
     <!-- Fav and touch icons -->
     <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">

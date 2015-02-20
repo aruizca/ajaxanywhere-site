@@ -7,9 +7,10 @@ buildscript {
 
     dependencies {
         classpath 'me.champeau.gradle:jbake-gradle-plugin:0.2'
+        classpath 'org.jbake:jbake-core:2.3.2'
         classpath 'org.pegdown:pegdown:1.4.2'
-        classpath 'org.asciidoctor:asciidoctor-java-integration:0.1.4'
-//        classpath 'org.asciidoctor:asciidoctorj:1.5.2'
+//        classpath 'org.asciidoctor:asciidoctor-java-integration:0.1.4'
+        classpath 'org.asciidoctor:asciidoctorj:1.5.2'
     }
 }
 
@@ -18,6 +19,7 @@ apply plugin: 'idea'
 apply plugin: 'java'
 
 jbake {
+    dependsOn 'webjars resources extraction'
     input  = file 'jbake'
     clearCache = true
     configuration['render.tag'] = 'true'
@@ -36,17 +38,25 @@ repositories {
 
 dependencies {
     webjars  'org.webjars:jquery:2.1.3'
+    webjars  'org.webjars:bootstrap:3.3.2-1'
+    webjars  'org.webjars:highlightjs:8.4-4'
 }
 
 task('webjars resources extraction', type: Copy) {
     configurations.webjars.each {jar ->
+
+        def config = configurations.webjars.resolvedConfiguration
+        def artifact = config.resolvedArtifacts.find {
+            it.file.toString() == jar.absolutePath
+        }
+
         copy {
             from zipTree(jar)
             into file("${buildDir}/webjars-content/${jar.name}")
         }
         copy {
-            from "${buildDir}/webjars-content/${jar.name}/META-INF/resources/webjars"
-            into "${jbake.input}/vendor"
+            from "${buildDir}/webjars-content/${jar.name}/META-INF/resources/webjars/${artifact.moduleVersion.id.name}/${artifact.moduleVersion.id.version}"
+            into "${jbake.input}/assets/vendor/${artifact.name}"
         }
     }
 }
