@@ -10,10 +10,10 @@
     <meta name="generator" content="JBake">
 
     <!-- Le styles -->
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>vendor/highlightjs/default.min.css" rel="stylesheet">
     <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/asciidoctor.css" rel="stylesheet">
     <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/base.css" rel="stylesheet">
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/prettify.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
