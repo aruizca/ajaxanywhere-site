@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
-    <title><%if (content.title) {%>${content.title}<% } else { %>JBake<% }%></title>
+    <title>AjaxAnywhere (Reloaded)<% if (content.title) { %> - ${content.title}<% } %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AjaxAnywhere main site">
     <meta name="author" content="Angel Ruiz Calvo">
-    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation">
+    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation,Angel,Angel Ruiz, Angel Ruiz Calvo, nerderg">
     <meta name="generator" content="JBake">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/asciidoctor.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/highlightjs/styles/default.min.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/base.css" rel="stylesheet">
 
-    <!-- Le styles -->
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>vendor/highlightjs/default.min.css" rel="stylesheet">
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/asciidoctor.css" rel="stylesheet">
-    <link href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>favicon.ico">
+</head>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-
-    <!-- Fav and touch icons -->
-    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>favicon.ico">
-  </head>
-  <body onload="prettyPrint()">
-    <div id="wrap">
-   
+<body>

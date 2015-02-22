@@ -19,7 +19,7 @@ apply plugin: 'idea'
 apply plugin: 'java'
 
 jbake {
-    dependsOn 'webjars resources extraction'
+    dependsOn 'cleanBuildDir','webjars resources extraction'
     input  = file 'jbake'
     clearCache = true
     configuration['render.tag'] = 'true'
@@ -40,6 +40,7 @@ dependencies {
     webjars  'org.webjars:jquery:2.1.3'
     webjars  'org.webjars:bootstrap:3.3.2-1'
     webjars  'org.webjars:highlightjs:8.4-4'
+    webjars  'org.webjars:font-awesome:4.3.0-1'
 }
 
 task('webjars resources extraction', type: Copy) {
@@ -50,15 +51,24 @@ task('webjars resources extraction', type: Copy) {
             it.file.toString() == jar.absolutePath
         }
 
+        def upStreamVersion = "${artifact.moduleVersion.id.version}"
+        upStreamVersion = upStreamVersion.replaceAll(/(-[\d.-]+)/, '')
+
         copy {
             from zipTree(jar)
-            into file("${buildDir}/webjars-content/${jar.name}")
+            into file("${buildDir}/webjars-content/${artifact.name}")
         }
         copy {
-            from "${buildDir}/webjars-content/${jar.name}/META-INF/resources/webjars/${artifact.moduleVersion.id.name}/${artifact.moduleVersion.id.version}"
+            from "${buildDir}/webjars-content/${artifact.name}/META-INF/resources/webjars/${artifact.name}/${upStreamVersion}",
+                 "${buildDir}/webjars-content/${artifact.name}/META-INF/resources/webjars/${artifact.name}/${artifact.moduleVersion.id.version}"
+
             into "${jbake.input}/assets/vendor/${artifact.name}"
         }
     }
+}
+
+task cleanBuildDir(type: Delete) {
+    delete "build"
 }
 
 
