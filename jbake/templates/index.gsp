@@ -1,5 +1,7 @@
-${include "header.gsp"}
-
+<!DOCTYPE html>
+<html lang="en">
+<% include "header.gsp" %>
+<body class="home">
 <% include "menu.gsp" %>
 
 <div id="main" class="container">
@@ -77,7 +79,10 @@ ${include "header.gsp"}
     <area shape="rect" coords="178,37,328,78" target="_blank" href="http://grails.org/" title="Grails" alt="Grails">
     <area shape="rect" coords="355,37,559,93" target="_blank" href="http://www.springsource.org/spring-framework" title="Spring MVC" alt="Spring MVC">
     <area shape="rect" coords="575,37,724,78" target="_blank" href="http://www.playframework.com" title="Loom framework" alt="Play framework">
-    <area shape="rect" coords="740,37,882,78" target="_blank" href="http://www.stripesframework.org/display/stripes/Home" title="Stripes" alt="Stripes">
+    <area shape="rect" coords="740,37,882,78" target="_blank" href="https://stripesframework.atlassian.net/wiki/display/STRIPES/Home" title="Stripes" alt="Stripes">
 </map>
 
 <% include "footer.gsp" %>
+
+</body>
+</html>

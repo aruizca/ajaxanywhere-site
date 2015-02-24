@@ -35,5 +35,3 @@
 <script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
     } %>js/jquery.bootstrap.newsbox.min.js"></script>
 <script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>js/main.js"></script>
-</body>
-</html>
