@@ -22,7 +22,7 @@ jbake {
     dependsOn 'cleanBuildDir','webjars resources extraction'
     input  = file 'jbake'
     clearCache = true
-    configuration['render.tag'] = 'true'
+    configuration['template.documentation.file'] = 'documentation.gsp'
 }
 
 configurations {
