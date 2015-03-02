@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <% include "header.gsp" %>
+</head>
 <body class="home">
 <% include "menu.gsp" %>
 
@@ -56,7 +58,7 @@
                 <i class="fa fa-newspaper-o"></i> <b>News</b></div>
             <div class="panel-body">
                 <div class="col-xs-12">
-                    <ul id="demo">
+                    <ul id="news">
                         <li class="news-item">
                             <h4>13/03/2013</h4>
                             <p>First version 2.0 has been released.</p>
@@ -83,6 +85,7 @@
 </map>
 
 <% include "footer.gsp" %>
-
+<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
+    } %>js/jquery.bootstrap.newsbox.min.js"></script>
 </body>
 </html>

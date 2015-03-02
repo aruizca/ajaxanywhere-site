@@ -32,6 +32,5 @@
     } %>vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
     } %>vendor/highlightjs/highlight.min.js"></script>
-<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
-    } %>js/jquery.bootstrap.newsbox.min.js"></script>
-<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>js/main.js"></script>
+
+        <script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>js/main.js"></script>

@@ -12,7 +12,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>index.html">Documentation</a></li>
+            <li><a class="documentation" href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>index.html">Documentation</a></li>
             <li><a href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>about.html">Examples</a></li>
             <li><a href="">Download</a></li>
             <li><a id="grails-plugin" href="">Grails Plugin</a></li>

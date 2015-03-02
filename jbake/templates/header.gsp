@@ -1,5 +1,5 @@
 
-<head>
+
     <meta charset="utf-8"/>
     <title>AjaxAnywhere (Reloaded)<% if (content.title) { %> - ${content.title}<% } %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,4 +16,3 @@
     <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/base.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>favicon.ico">
-</head>

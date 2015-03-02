@@ -56,6 +56,10 @@ body.home .navbar-brand {
     color: white;
 }
 
+body.documentation ul.nav .documentation {
+    color: white;
+}
+
 a.navbar-brand {
     background: url('../img/ajax-logo.png') no-repeat 20px center;
     padding-left: 60px !important;
@@ -166,5 +170,23 @@ a.navbar-brand {
 
 #social a:first-child {
     margin-right: 2em;
+}
+
+#toc {
+    width: 15%;
+    margin-top: 2em;
+}
+
+.tocify-item.active{
+    font-weight: bold;
+    background-color: #0088CC;
+}
+
+.tocify-item.active a{
+    color: white;
+}
+
+.tocify-item.active a:hover {
+    color: inherit;
 }
 
