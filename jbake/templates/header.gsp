@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AjaxAnywhere main site">
     <meta name="author" content="Angel Ruiz Calvo">
-    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation,Angel,Angel Ruiz, Angel Ruiz Calvo, nerderg">
+    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation,Angel,Angel Ruiz, Angel Ruiz Calvo, nerderg, grails, groovy, java, java ee">
     <meta name="generator" content="JBake">
     <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
     <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/asciidoctor.css" rel="stylesheet">
