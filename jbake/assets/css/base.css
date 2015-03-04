@@ -173,8 +173,9 @@ a.navbar-brand {
 }
 
 #toc {
-    width: 15%;
+    width: 21%;
     margin-top: 2em;
+    margin-left: 0;
 }
 
 .tocify-item.active{

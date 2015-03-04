@@ -34,23 +34,27 @@ You can see didactic working
 The idea is really simple:
 
 1.  Mark the zones to refresh in you JSP template.
-2.  Add special ``aa-refresh-zones'' on all action trigger elements that
-you want to ``ajaxify'' like: forms, submit buttons, input images or
+2.  Add special `aa-refresh-zones` on all action trigger elements that
+you want to "ajaxify" like: forms, submit buttons, input images or
 even normal links.
 3.  You can develop your server code as if you were implementing the
-classic ``synchronous'' approach.
+classic "synchronous" approach.
 4.  AjaxAnywhere servlet filter will intercept the Ajax request and
 extract the content that needs to be refreshed from the response. The
-``refresh zones'' contents will be put in XML back to the client +
+"refresh zones" contents will be put in XML back to the client +
 5.  AjaxAnywhere Javascript is responsible for parsing the XML and
 inserting the content in the page.
 
 The following picture and diagram may help to visualize it:
 
-image:http://nerderg.com/media/show/1537[ajaxanywhere-form.png,title="file: ajaxanywhere-form.png"] +
-Figure 1 - ``Ajaxified'' form with AjaxAnywhere
-
-image:http://nerderg.com/media/show/1555[ajaxanywhere-form.png,title="file: ajaxanywhere-form.png"] +
+[.float-group]
+--
+[.left]
+image::http://nerderg.com/media/show/1537[width="45%"]
+[.text-left]
+Figure 1 - "Ajaxified" form with AjaxAnywhere
+[.left]
+image::http://nerderg.com/media/show/1555[width="45%"]
 Figure 2 - AjaxAnywhere request life cycle
 
 == Usage
