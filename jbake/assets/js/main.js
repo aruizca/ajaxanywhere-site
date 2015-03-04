@@ -20,7 +20,7 @@ $(function() {
         $("#toc").tocify({
             context: '#documentation',
             selectors: 'h2,h3,h4',
-            scrollTo: 80
+            scrollTo: 120
         });
     }
 });
