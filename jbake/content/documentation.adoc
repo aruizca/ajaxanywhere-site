@@ -49,16 +49,15 @@ The following picture and diagram may help to visualize it:
 
 [.float-group]
 --
-[.left]
-image::http://nerderg.com/media/show/1537[width="45%"]
-[.text-left]
-Figure 1 - "Ajaxified" form with AjaxAnywhere
-[.left]
-image::http://nerderg.com/media/show/1555[width="45%"]
-Figure 2 - AjaxAnywhere request life cycle
+[.left.thumbnail-next]
+image::http://nerderg.com/media/show/1537[alt="\"Ajaxified\" form with AjaxAnywhere", 410, class="thumbnail", caption="Figure 1 - ", title="\"Ajaxified\" form with AjaxAnywhere", class="thumbnail"]
+
+[.left.thumbnail-next]
+image::http://nerderg.com/media/show/1555[alt="AjaxAnywhere request life cycle", 380, caption="Figure 2 - ", title="AjaxAnywhere request life cycle"]
+--
 
 == Usage
-=== So, how do you ``ajaxify'' page elements with AjaxAnywhere?
+=== So, how do you "ajaxify" page elements with AjaxAnywhere?
 
 Just add a new attribute called *aa-refresh-zones,* with a comma
 separated list of names of the *zones* you want to refresh, to any

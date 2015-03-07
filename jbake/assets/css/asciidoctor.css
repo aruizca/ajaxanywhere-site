@@ -90,7 +90,7 @@ p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type
 /* Lists */
 ul, ol, dl { font-size: 1em; line-height: 1.6; margin-bottom: 1.25em; list-style-position: outside; font-family: inherit; }
 
-ul, ol { margin-left: 1.5em; }
+/*ul, ol { margin-left: 1.5em; }*/
 
 /* Unordered Lists */
 ul li ul, ul li ol { margin-left: 1.25em; margin-bottom: 0; font-size: 1em; /* Override nested font-size change */ }
@@ -223,7 +223,7 @@ p a > code:hover { color: #561309; }
 
 .sect1 { padding-bottom: 1.25em; }
 
-.sect1 + .sect1 { border-top: 3px double #ebebeb; }
+/*.sect1 + .sect1 { border-top: 3px double #ebebeb; }*/
 
 #content h1 > a.anchor, h2 > a.anchor, h3 > a.anchor, #toctitle > a.anchor, .sidebarblock > .content > .title > a.anchor, h4 > a.anchor, h5 > a.anchor, h6 > a.anchor { position: absolute; width: 1em; margin-left: -1em; display: block; text-decoration: none; visibility: hidden; text-align: center; font-weight: normal; }
 #content h1 > a.anchor:before, h2 > a.anchor:before, h3 > a.anchor:before, #toctitle > a.anchor:before, .sidebarblock > .content > .title > a.anchor:before, h4 > a.anchor:before, h5 > a.anchor:before, h6 > a.anchor:before { content: '\00A7'; font-size: .85em; vertical-align: text-top; display: block; margin-top: 0.05em; }
@@ -338,7 +338,7 @@ p.tableblock.header { color: #222222; font-weight: bold; }
 
 td > div.verse { white-space: pre; }
 
-ol { margin-left: 1.75em; }
+/*ol { margin-left: 1.75em; }*/
 
 ul li ol { margin-left: 1.5em; }
 

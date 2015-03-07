@@ -3,34 +3,33 @@
 
 html,
 body {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
 }
 
 /* Wrapper for page content to push down footer */
 #wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
 }
 
 /* Set the fixed height of the footer here */
 /*#push,*/
 /*#footer {*/
-  /*height: 60px;*/
+/*height: 60px;*/
 /*}*/
-
 
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
-  #footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 /* Custom page CSS
@@ -38,10 +37,11 @@ body {
 /* Not required for template or sticky footer method. */
 
 #wrap > .container {
-  padding-top: 60px;
+    padding-top: 60px;
 }
+
 .container .credit {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 #main {
@@ -84,7 +84,7 @@ a.navbar-brand {
 }
 
 .carousel-caption {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     position: relative;
     margin-top: 3em;
     z-index: 10;
@@ -142,26 +142,39 @@ a.navbar-brand {
     text-decoration: none;
 }
 
-.pagination a
-{
-    color:#555;
+.pagination a {
+    color: #555;
 }
-.panel ul
-{
-    padding:0px;
-    margin:0px;
-    list-style:none;
+
+.panel ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
 }
 
 .panel-body {
     height: 200px;
 }
 
-.news-item
-{
-    padding:4px 4px;
-    margin:0px;
-    border-bottom:1px dotted #555;
+.news-item {
+    padding: 4px 4px;
+    margin: 0px;
+    border-bottom: 1px dotted #555;
+}
+
+.thumbnail-next img {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
+}
+
+.thumbnail-next .title {
+    text-align: center;
 }
 
 #social {
@@ -173,17 +186,17 @@ a.navbar-brand {
 }
 
 #toc {
-    width: 21%;
+    width: 270px;
     margin-top: 2em;
     margin-left: 0;
 }
 
-.tocify-item.active{
+.tocify-item.active {
     font-weight: bold;
     background-color: #0088CC;
 }
 
-.tocify-item.active a{
+.tocify-item.active a {
     color: white;
 }
 
