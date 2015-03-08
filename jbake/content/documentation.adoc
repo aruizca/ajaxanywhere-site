@@ -57,14 +57,73 @@ image::http://nerderg.com/media/show/1555[alt="AjaxAnywhere request life cycle",
 --
 
 == Usage
-=== So, how do you "ajaxify" page elements with AjaxAnywhere?
 
-Just add a new attribute called *aa-refresh-zones,* with a comma
+=== Installation
+1. Add the AjaxAnywhere library dependency:
+
+++++
+<script src="https://gist.github.com/aruizca/5079938.js"></script>
+++++
+
+=== How to **ajaxify** page elements
+
+Just add a new attribute called `aa-refresh-zones`, with a comma
 separated list of names of the *zones* you want to refresh, to any
 **form**, **input**, **button**,*select* or **anchor element**.
 
-* **<form …>**: this will automatically ``ajaxify'' all the submits from
+* **`<form …>`**: this will automatically "ajaxify" all the submits from
 within the form
 (http://www.ajaxanywhere.com/action/examples#example1[working example]):
+
+++++
+<script src="https://gist.github.com/aruizca/5079302.js"></script>
+++++
+
+* **`<input type="submit" …>`, `<input type="image" …>`, `<button
+type="submit" …>`**: this way you can specify more fine grained behavior
+refresh zones depending upon the clicked button within a form. You don’t
+need to ajaxify the form if you ajaxify the individual elements within
+the form. The **refresh zones specified in a submit element will always
+override those specified in the form**
+(http://www.ajaxanywhere.com/action/examples#example2[working example]):
+
+++++
+<script src="https://gist.github.com/aruizca/5079390.js"></script>
+++++
+
+* **`<select …>`**: you can also trigger an Ajax request when the selected
+  value changes in a drop-down list
+  (http://www.ajaxanywhere.com/action/examples#example3[working example]):
+
+++++
+<script src="https://gist.github.com/aruizca/5079417.js"></script>
+++++
+
+* **`<a href="…" …>`**: without requiring a form scope, **you can also
+  "ajaxify" any link within your page**
+  (http://www.ajaxanywhere.com/action/examples#example4[working example]):
+
+++++
+<script src="https://gist.github.com/aruizca/5079674.js"></script>
+++++
+
+=== Mark the zones to refresh in your page
+
+It is as simple as: +
+
+1.  declaring the AjaxAnywhere taglib in your JSP template:
+
+++++
+<script src="https://gist.github.com/aruizca/5079807.js"></script>
+++++
+
+2. and embed the content you want to refresh within the AjaxAnywhere tag.
+
+++++
+<script src="https://gist.github.com/aruizca/5079843.js"></script>
+++++
+
+
+
 
 
