@@ -186,7 +186,7 @@ a.navbar-brand {
 }
 
 #toc {
-    width: 270px;
+    width: 320px;
     margin-top: 2em;
     margin-left: 0;
 }
@@ -202,5 +202,9 @@ a.navbar-brand {
 
 .tocify-item.active a:hover {
     color: inherit;
+}
+
+.content a.image {
+    cursor: zoom-in;
 }
 

@@ -50,20 +50,48 @@ The following picture and diagram may help to visualize it:
 [.float-group]
 --
 [.left.thumbnail-next]
-image::http://nerderg.com/media/show/1537[alt="\"Ajaxified\" form with AjaxAnywhere", 410, class="thumbnail", caption="Figure 1 - ", title="\"Ajaxified\" form with AjaxAnywhere", class="thumbnail"]
+image::img/aa-image1.png[alt="\"Ajaxified\" form with AjaxAnywhere", 410, class="thumbnail", caption="Figure 1 - ", title="\"Ajaxified\" form with AjaxAnywhere", class="thumbnail", link="img/aa-image1.png"]
 
 [.left.thumbnail-next]
-image::http://nerderg.com/media/show/1555[alt="AjaxAnywhere request life cycle", 380, caption="Figure 2 - ", title="AjaxAnywhere request life cycle"]
+image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 380, caption="Figure 2 - ", title="AjaxAnywhere request life cycle", link="img/aa-image2.png"]
 --
 
 == Usage
 
 === Installation
-1. Add the AjaxAnywhere library dependency:
+
+[#coordinates]
+* Add the AjaxAnywhere library dependency:
 
 ++++
 <script src="https://gist.github.com/aruizca/5079938.js"></script>
 ++++
+
+* Register the AjaxAnywhere filter in your **web.xml**: it is important to
+  register this filter before any other filter that is likely to modify
+  the response content (e.g Sitemesh, …):
+
+++++
+<script src="https://gist.github.com/aruizca/5080030.js"></script>
+++++
+
+* Import jQuery (1.7+) and AjaxAnywhere Javascript libraries:
+
+++++
+<script src="https://gist.github.com/aruizca/5080080.js"></script>
+++++
+
+* If you are not using a Servlet 3.0 compliant Application Server (like
+  Tomcat 7.x), then you need to register the following servlet declaration
+  in order to be able to retrieve the AjaxAnywhere Javascript file
+  jquery-aa.js. This is due to the fact that AjaxAnywhere is using the
+  http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/[
+  Servlet 3.0 mechanism to serve static resources from within a JAR file^]:
+
+++++
+<script src="https://gist.github.com/aruizca/5080167.js"></script>
+++++
+
 
 === How to **ajaxify** page elements
 
@@ -111,17 +139,96 @@ override those specified in the form**
 
 It is as simple as: +
 
-1.  declaring the AjaxAnywhere taglib in your JSP template:
+* declaring the AjaxAnywhere taglib in your JSP template:
 
 ++++
 <script src="https://gist.github.com/aruizca/5079807.js"></script>
 ++++
 
-2. and embed the content you want to refresh within the AjaxAnywhere tag.
+* and embed the content you want to refresh within the AjaxAnywhere tag:
 
 ++++
 <script src="https://gist.github.com/aruizca/5079843.js"></script>
 ++++
+
+== F.A.Q.
+
+==== Where can I download the library?
+We highly recommend that you use a dependency manager like Maven, Gradle
+or Apache Ivy and use the Maven coordinates explained
+<<coordinates,above>>. But if you are stuck in an awful legacy
+project and you want to make it look nicer with AjaxAnywhere, then you
+can download the library from the
+link:++https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~++[AjaxAnywhere
+Maven repository hosted by Sonatype^].
+
+==== How can I display a spinner or any other notification mechanism while the Ajax request is processed?
+Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you
+just need to register an event handler using the
+`link:http://api.jquery.com/ajaxStart/[jQuery ajaxStart()^]` method and
+implement the behavior you want. Next there is an example that shows how
+to do it:
+
+++++
+<script src="https://gist.github.com/aruizca/5139667.js"></script>
+++++
+
+==== Is there any way to identify an AjaxAnywhere Ajax request at server side?
+
+Sure you can! In fact one very common use case in a controller is to
+perform either a forward or a redirect depending on if it was an Ajax
+request or not. AjaxAnywhere provides the static
+*AAUtils.isAjaxAnywhereRequest(request)* method for your convenience:
+
+++++
+<script src="https://gist.github.com/aruizca/5139808.js"></script>
+++++
+
+==== What are the advantages of using AjaxAnywhere?
+Just three words: **simplicity, productivity and maintainability**. For
+most of the use cases that a developer can face, AjaxAnywhere is the
+*easiest* and *most cost-effective* way to implement Ajax enabled web
+applications. +
+
+You can also implement AjaxAnywhere in your legacy projects without
+making any change to your controller layer. It also makes it easier to
+implement graceful degradation or continued enhancement to your UI so
+you can meet you accessibility requirements without crippling the UX.
+
+==== Are there any inconveniences?
+Although AjaxAnywhere impact on response time is negligible for the vast
+majority of use cases that we all developers have to deal with on daily
+basis, but there could be certain scenarios where 10ms per request
+must be taken into consideration.
+
+==== I am still stuck in JDK 1.4, can I still use AjaxAnywhere?
+We feel so sorry for you mate… what can we do? Oh yeah! we created a
+profile in the AjaxAnywhere library pom file so you can download the
+source code, and package your own JDK 1.4 compatible JAR. Once you pull
+the code, execute the following Maven command in the AjaxAnywhere Core
+folder (not the parent project folder):
+
+----
+mvn package -P1.4
+----
+
+==== What external dependencies does AjaxAnywhere have?
+None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container. +
+The application logging is performed with JUL (Java Util Logging). +
+ +
+At client side though you will need jQuery 1.7+, although *jQuery 1.9.x*
+is recommended.
+
+==== What if I want to bridge the JUL based traces to SLF4J?
+AjaxAnywhere includes a ServletContextListener implementation to do
+that. Just add it to your web.xml as follows: +
+
+++++
+<script src="https://gist.github.com/aruizca/5080373.js"></script>
+++++
+
+
+
 
 
 
