@@ -14,9 +14,7 @@
           <ul class="nav navbar-nav">
             <li><a class="documentation" href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>documentation.html">Documentation</a></li>
             <li><a href="<%if (content.rootpath) {%>${content.rootpath}<% } else { %><% }%>about.html">Examples</a></li>
-            <li><a href="">Download</a></li>
             <li><a id="grails-plugin" href="">Grails Plugin</a></li>
-
           </ul>
         </div><!--/.nav-collapse -->
       </div>
