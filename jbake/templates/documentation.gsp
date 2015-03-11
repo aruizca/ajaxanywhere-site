@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<% include "header.gsp" %>
-<link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
-<link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/magnific-popup.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/asciidoctor.css" rel="stylesheet">
+    <% include "header.gsp" %>
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>css/magnific-popup.css" rel="stylesheet">
 </head>
 <body class="documentation">
 <% include "menu.gsp" %>

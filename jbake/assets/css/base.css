@@ -5,6 +5,7 @@ html,
 body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
+    font-family: "Open Sans","DejaVu Sans",sans-serif;
 }
 
 /* Wrapper for page content to push down footer */
@@ -114,8 +115,8 @@ a.navbar-brand {
 #footer {
     text-align: left;
     height: 150px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 0;
+    padding-left: 0;
     vertical-align: middle;
     padding-top: 20px;
     border-top: solid 1px #d3d3d3;
@@ -206,5 +207,15 @@ a.navbar-brand {
 
 .content a.image {
     cursor: zoom-in;
+}
+
+#documentation h2, #documentation h3 {
+    font-family: 'Special Elite';
+}
+
+#documentation h3, #documentation h4 {
+    color: #ba3925;
+    margin-bottom: .8em;
+    margin-top: 1em;
 }
 
