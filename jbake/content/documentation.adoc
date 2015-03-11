@@ -23,8 +23,8 @@ parser has been removed.
 * JSF support has been dropped. +
 
 AjaxAnywhere continues to be a *page or page fragment oriented
-framework* and not a component framework. So don’t expect to find ``yet
-another autocomplete component''.
+framework* and not a component framework. So don’t expect to find "yet
+another autocomplete component".
 
 You can see didactic working
 **http://www.ajaxanywhere.com/action/examples[EXAMPLES HERE]**.
@@ -53,7 +53,7 @@ The following picture and diagram may help to visualize it:
 image::img/aa-image1.png[alt="\"Ajaxified\" form with AjaxAnywhere", 410, class="thumbnail", caption="Figure 1 - ", title="\"Ajaxified\" form with AjaxAnywhere", class="thumbnail", link="img/aa-image1.png"]
 
 [.left.thumbnail-next]
-image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 380, caption="Figure 2 - ", title="AjaxAnywhere request life cycle", link="img/aa-image2.png"]
+image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Figure 2 - ", title="AjaxAnywhere request life cycle", link="img/aa-image2.png"]
 --
 
 === Slides presentation

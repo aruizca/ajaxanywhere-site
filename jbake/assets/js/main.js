@@ -37,7 +37,7 @@ $(function() {
         $("#toc").tocify({
             context: '#documentation',
             selectors: 'h2,h3',
-            scrollTo: 120,
+            scrollTo: 80,
             extendPage: false
         });
     }

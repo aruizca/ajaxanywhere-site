@@ -176,6 +176,8 @@ a.navbar-brand {
 
 .thumbnail-next .title {
     text-align: center;
+    font-weight: normal;
+    font-style: italic;
 }
 
 #social {
