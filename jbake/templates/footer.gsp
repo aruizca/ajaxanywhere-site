@@ -27,10 +27,7 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>vendor/jquery/jquery.min.js"></script>
-<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
-    } %>vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><%
-    } %>vendor/highlightjs/highlight.min.js"></script>
-
-        <script src="<% if (content.rootpath) { %>${content.rootpath}<% } else { %><% } %>js/main.js"></script>
+<script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/jquery/jquery.min.js"></script>
+<script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/highlightjs/highlight.min.js"></script>
+<script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>js/main.js"></script>
