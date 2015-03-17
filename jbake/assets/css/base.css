@@ -5,7 +5,7 @@ html,
 body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
-    font-family: "Open Sans","DejaVu Sans",sans-serif;
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
 }
 
 /* Wrapper for page content to push down footer */
@@ -180,10 +180,6 @@ a.navbar-brand {
     font-style: italic;
 }
 
-#social {
-    margin-top: 2em;
-}
-
 #social a:first-child {
     margin-right: 2em;
 }
@@ -219,5 +215,24 @@ a.navbar-brand {
     color: #ba3925;
     margin-bottom: .8em;
     margin-top: 1em;
+}
+
+#tools-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tools-list li {
+    line-height: 2em;
+    font-size: 1.3em;
+    background-repeat: no-repeat;
+    padding-left: 2.8em;
+}
+
+#tools-list li.jbake {
+    background-image: url(../img/jbake-logo-32x32.png);
+
+
 }
 
