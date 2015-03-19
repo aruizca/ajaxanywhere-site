@@ -224,15 +224,26 @@ a.navbar-brand {
 }
 
 #tools-list li {
-    line-height: 2em;
+    line-height: 1.8em;
     font-size: 1.3em;
     background-repeat: no-repeat;
-    padding-left: 2.8em;
+    padding-left: 2.4em;
+    margin-top: .5em;
 }
 
 #tools-list li.jbake {
     background-image: url(../img/jbake-logo-32x32.png);
+}
 
+#tools-list li.asciidoctor {
+    background-image: url(../img/asciidoctor-logo-32x32.png);
+}
 
+#tools-list li.webjars {
+    background-image: url(../img/webjars-logo-32x32.png);
+}
+
+#tools-list li.gradle {
+    background-image: url(../img/gradle-logo-32x32.png);
 }
 

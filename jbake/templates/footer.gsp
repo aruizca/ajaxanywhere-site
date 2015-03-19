@@ -10,12 +10,12 @@
             </div>
 
             <div class="col-md-4">
-                <span>Powered by:</span>
+                <span>Site powered by:</span>
                 <ul id="tools-list">
                     <li class="jbake">jBake</li>
-                    <li>Asciidoctor</li>
-                    <li>Webjars</li>
-                    <li>Gradle</li>
+                    <li class="asciidoctor">Asciidoctor</li>
+                    <li class="webjars">Webjars</li>
+                    <li class="gradle">Gradle</li>
                 </ul>
             </div>
 
@@ -39,5 +39,4 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/jquery/jquery.min.js"></script>
 <script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/highlightjs/highlight.min.js"></script>
 <script src="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>js/main.js"></script>

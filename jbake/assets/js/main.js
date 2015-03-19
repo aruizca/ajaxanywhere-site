@@ -1,5 +1,7 @@
 $(function() {
-    hljs.initHighlightingOnLoad();
+    if (typeof hljs != 'undefined') {
+        hljs.initHighlightingOnLoad();
+    }
 
     if ($().bootstrapNews) {
         $("#news").bootstrapNews({

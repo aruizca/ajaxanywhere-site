@@ -11,7 +11,6 @@
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/highlightjs/styles/default.min.css" rel="stylesheet">
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>css/base.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>favicon.ico">

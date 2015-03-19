@@ -3,4 +3,5 @@
 build/*
 *.iml
 *.ipr
+*.iws
 jbake/assets/vendor
