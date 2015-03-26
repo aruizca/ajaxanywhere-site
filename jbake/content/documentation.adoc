@@ -56,12 +56,6 @@ image::img/aa-image1.png[alt="\"Ajaxified\" form with AjaxAnywhere", 410, class=
 image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Figure 2 - ", title="AjaxAnywhere request life cycle", link="img/aa-image2.png"]
 --
 
-=== Slides presentation
-
-++++
-<iframe src="//www.slideshare.net/slideshow/embed_code/17160667" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/pakin318/ajaxanywhere-reloaded-library" title="AjaxAnywhere (Reloaded) library" target="_blank">AjaxAnywhere (Reloaded) library</a> </strong> from <strong><a href="//www.slideshare.net/pakin318" target="_blank">Angel Ruiz</a></strong> </div>
-++++
-
 == Usage
 
 === Installation

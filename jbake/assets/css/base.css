@@ -221,14 +221,20 @@ a.navbar-brand {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
 
 #tools-list li {
-    line-height: 1.8em;
+    line-height: 2.5em;
     font-size: 1.3em;
     background-repeat: no-repeat;
     padding-left: 2.4em;
-    margin-top: .5em;
+}
+
+#tools-list a {
+    color: black !important;
 }
 
 #tools-list li.jbake {
