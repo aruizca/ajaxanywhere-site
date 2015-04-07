@@ -43,4 +43,15 @@ $(function() {
             extendPage: false
         });
     }
+
+    if ($().iFrameResize) {
+        $('#examples-iframe').iFrameResize({
+            checkOrigin: false
+        });
+
+        $("#examples-iframe").on("load",function() {
+            alert(1);
+            console.log($('#examples-iframe').contents());
+        });
+    }
 });

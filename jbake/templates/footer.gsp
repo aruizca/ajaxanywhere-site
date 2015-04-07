@@ -21,13 +21,13 @@
 
             <div id="social" class="col-md-3">
                 <span>Copyright &copy; 2015 Angel Ruiz</span>
-                <div class="text-center">
-                <a href="https://twitter.com/aruizca" target="_blank">
-                    <img src="img/Twitter.png" title="Angel's Twitter account" alt="Angel's Twitter account">
-                </a>
-                <a href="https://www.linkedin.com/in/angelruiz" target="_blank">
-                    <img src="img/LinkedIn.png" title="Angel's LinkedIn page" alt="Angel's LinkedIn page">
-                </a>
+                <div class="social">
+                    <ul class="social-icons icon-circle list-unstyled list-inline icon-rotate">
+                        <li> <a href="https://www.linkedin.com/in/angelruiz" target="_blank" title="Angel's LinkedIn page"><i class="fa fa-linkedin"></i></a></li>
+                        <li> <a href="https://github.com/aruizca" target="_blank" title="Angel's GitHub repository"><i class="fa fa-github"></i></a></li>
+                        <li> <a href="https://twitter.com/aruizca" target="_blank" title="Angel's Twiiter account"><i class="fa fa-twitter"></i></a></li>
+                        <li> <a href="http://aruizca.com" target="_blank" title="Angel's Blog"><i class="fa fa-male"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </footer>
