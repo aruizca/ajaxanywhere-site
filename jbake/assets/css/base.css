@@ -32,9 +32,9 @@ a.navbar-brand {
 }
 
 #grails-plugin {
-    background: url('../img/grails-icon.png') left 10px no-repeat;
+    background: url('../img/grails-icon.png') left 5px top 12px no-repeat;
     padding-left: 30px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .carousel-inner img {
@@ -244,7 +244,6 @@ a.navbar-brand {
     line-height: 50px;
     text-align: center;
     color: #FFF;
-    color: rgba(255, 255, 255, 0.8);
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
