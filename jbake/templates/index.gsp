@@ -15,6 +15,7 @@
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -26,7 +27,13 @@
                     <p>is an <strong>Open Source</strong> Java Ajax framework that enables the developer to <strong>declaratively add async server side rendering and page refresh without any Javascript coding</strong>.</p>
                 </div>
             </div>
-
+            <div class="item">
+                <img src="img/declarative_vs_imperative.png" alt="Declarative vs Imperative">
+                <div class="carousel-caption">
+                    <h4>Declarative approach</h4>
+                    <p>asfdasdfasdf</p>
+                </div>
+            </div>
             <div class="item">
                 <img src="img/features.png" alt="AjaxAnywheres features" usemap="#frameworks-map">
                 <div class="carousel-caption">
