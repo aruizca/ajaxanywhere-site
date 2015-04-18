@@ -6,14 +6,14 @@
     <atom:link href="http://ajaxanywhere.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Sat, 18 Apr 2015 15:19:25 +1000</pubDate>
-    <lastBuildDate>Sat, 18 Apr 2015 15:19:25 +1000</lastBuildDate>
+    <pubDate>Sat, 18 Apr 2015 10:01:04 +0000</pubDate>
+    <lastBuildDate>Sat, 18 Apr 2015 10:01:04 +0000</lastBuildDate>
 
     
     <item>
       <title>null</title>
       <link>http://ajaxanywhere.com/blog/20150113.html</link>
-      <pubDate>Tue, 13 Jan 2015 00:00:00 +1100</pubDate>
+      <pubDate>Tue, 13 Jan 2015 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">blog/20150113.html</guid>
       <description>
       &lt;p&gt;Works are underway for version 2.1. This release will include quite a few new features. Stay tuned...&lt;/p&gt;
@@ -24,7 +24,7 @@
     <item>
       <title>null</title>
       <link>http://ajaxanywhere.com/blog/20130313.html</link>
-      <pubDate>Wed, 13 Mar 2013 00:00:00 +1100</pubDate>
+      <pubDate>Wed, 13 Mar 2013 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">blog/20130313.html</guid>
       <description>
       &lt;p&gt;First version 2.0 has been released.&lt;/p&gt;
