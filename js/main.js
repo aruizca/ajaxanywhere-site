@@ -54,4 +54,6 @@ $(function() {
             console.log($('#examples-iframe').contents());
         });
     }
+
+    $('#grails-plugin').popover();
 });

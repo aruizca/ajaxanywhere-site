@@ -6,9 +6,24 @@
     <atom:link href="http://ajaxanywhere.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Sat, 18 Apr 2015 11:18:47 +0000</pubDate>
-    <lastBuildDate>Sat, 18 Apr 2015 11:18:47 +0000</lastBuildDate>
+    <pubDate>Sat, 18 Apr 2015 11:58:20 +0000</pubDate>
+    <lastBuildDate>Sat, 18 Apr 2015 11:58:20 +0000</lastBuildDate>
 
+    
+    <item>
+      <title>null</title>
+      <link>http://ajaxanywhere.com/blog/20150418.html</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/20150418.html</guid>
+      <description>
+      &lt;p&gt;New website published. It has been redeveloped using
+    &lt;a href=&quot;http://jbake.org/&quot; target=&quot;_blank&quot; title=&quot;jBake website&quot;&gt;jBake&lt;/a&gt;,
+    &lt;a href=&quot;http://asciidoctor.org/&quot; target=&quot;_blank&quot; title=&quot;asciidoctor website&quot;&gt;Asciidoctor&lt;/a&gt;,
+    &lt;a href=&quot;http://www.webjars.org&quot; target=&quot;_blank&quot; title=&quot;Webjars website&quot;&gt;Webjars&lt;/a&gt; and
+    &lt;a href=&quot;https://gradle.org/&quot; target=&quot;_blank&quot; title=&quot;Gradle website&quot;&gt;Gradle&lt;/a&gt; among other techonologies.&lt;/p&gt;
+
+	  </description>
+    </item>
     
     <item>
       <title>null</title>
