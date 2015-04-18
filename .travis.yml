@@ -7,9 +7,9 @@ branches:
 before_script:
 - git config --global user.email "aruizca@gmail.com"
 - git config --global user.name "aruizca"
-script:
 - git config credential.helper "store --file=.git/credentials"
 - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+script:
 - gradle publish --stacktrace --info
 env:
   global:
