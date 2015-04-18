@@ -6,11 +6,9 @@ branches:
   - master
 before_script:
 - git config --global user.email "aruizca@gmail.com"
-- git config --global user.name "aruizca"
-- git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+- git config --global user.name "Angel Ruiz"
 script:
-- gradle publish --stacktrace --info
+- gradle publish -Dorg.ajoberstar.grgit.auth.username=${GH_USERNAME} -Dorg.ajoberstar.grgit.auth.password=${GH_PASSWORD} --stacktrace --info
 env:
   global:
-    secure: R7sqzyyixVt3kpxS68yEnE9Bt/D8HcCDNrT8Svc7u5nwgnOjBVIU4LbVyHtvejLQ/wKQDu0eS2u+YiLURaoOTf1DROA4dA8pkYl7U2Un1V0ue5schN32NI7A7Tep7BVK2tPJKptbGmWcI7duK9nJfM6XJFU1IxYr3KGelnQL3Tk=
+    secure: tHGX6vdvDCYyH/ztj4Pl4otp2GekrtY6+0anv612FcOPvubGqJd47aOxl4b78sVAAC6kYfWi2G1Dy6OvWK38WMYIyz8JP2U/qElBot2WA4DBhatlqU2u+fg52a0DmVx1JkLP/VG+LTBNluRYt10Vbqw/XbuO1+fmv8q2OTfxWA4=
