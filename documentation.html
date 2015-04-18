@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/asciidoctor.css" rel="stylesheet">
+    <link href="vendor/highlightjs/styles/default.min.css" rel="stylesheet">
+    <link href="vendor/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    
+
+    <meta charset="utf-8"/>
+    <title>AjaxAnywhere (Reloaded) - Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AjaxAnywhere main site">
+    <meta name="author" content="Angel Ruiz Calvo">
+    <meta name="keywords" content="Ajax, AjaxAnywhere, Anywhere, ajax, documentation,Angel,Angel Ruiz, Angel Ruiz Calvo, nerderg, grails, groovy, java, java ee">
+    <meta name="generator" content="JBake">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+</head>
+<body class="documentation">
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">AjaxAnywhere (Reloaded)</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="documentation" href="documentation.html">Documentation</a></li>
+                <li><a href="http://examples.ajaxanywhere.com">Examples</a></li>
+                <li><a id="grails-plugin" href="">Grails Plugin</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false"><i class="fa fa-github fa-lg"></i> Source Code <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://github.com/nerdErg/AjaxAnywhere" target="_blank">AjaxAnywhere library and examples</a></li>
+                        <li><a href="https://github.com/aruizca/ajaxanywhere-site" target="_blank">AjaxAnywhere site</a></li>
+                        <li><a href="https://github.com/nerdErg/AjaxAnywhere-grails-plugin" target="_blank">AjaxAnywhere Grails plugin</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div id="main" class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1" id="documentation">
+            <div class="sect1">
+<h2 id="_what_is_it">What is it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>AjaxAnywhere</strong> is an <strong>Open Source</strong> Java Ajax framework that enables the
+developer to <strong>add Ajax behaviour to your web application adding simple
+markup and without any Javascript coding</strong>. This library is a fork of
+the ancient and abandoned
+<a href="http://ajaxanywhere.sourceforge.net/">AjaxAnywhere</a> library hosted in
+SourceForge but with the following improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>The developer does not need to write any Javascript code.</strong> You just
+need to include the AjaxAnywhere Javascript file in your page and it
+will do the rest for you!!</p>
+</li>
+<li>
+<p>AjaxAnywhere Javascript file now <strong>relies on jQuery</strong> to implement all
+the required features.</p>
+</li>
+<li>
+<p>Code base has been simplified and a dependency with the Java SE HTML
+parser has been removed.</p>
+</li>
+<li>
+<p>JSF support has been dropped.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>AjaxAnywhere continues to be a <strong>page or page fragment oriented
+framework</strong> and not a component framework. So don’t expect to find "yet
+another autocomplete component".</p>
+</div>
+<div class="paragraph">
+<p>You can see didactic working
+<strong><a href="http://www.ajaxanywhere.com/action/examples">EXAMPLES HERE</a></strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_does_it_work">How does it work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The idea is really simple:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mark the zones to refresh in you JSP template.</p>
+</li>
+<li>
+<p>Add special <code>aa-refresh-zones</code> on all action trigger elements that
+you want to "ajaxify" like: forms, submit buttons, input images or
+even normal links.</p>
+</li>
+<li>
+<p>You can develop your server code as if you were implementing the
+classic "synchronous" approach.</p>
+</li>
+<li>
+<p>AjaxAnywhere servlet filter will intercept the Ajax request and
+extract the content that needs to be refreshed from the response. The
+"refresh zones" contents will be put in XML back to the client<br></p>
+</li>
+<li>
+<p>AjaxAnywhere Javascript is responsible for parsing the XML and
+inserting the content in the page.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following picture and diagram may help to visualize it:</p>
+</div>
+<div class="openblock float-group">
+<div class="content">
+<div class="imageblock left thumbnail-next">
+<div class="content">
+<a class="image" href="img/aa-image1.png"><img src="img/aa-image1.png" alt=""Ajaxified" form with AjaxAnywhere" width="410"></a>
+</div>
+<div class="title">Figure 1 - "Ajaxified" form with AjaxAnywhere</div>
+</div>
+<div class="imageblock left thumbnail-next">
+<div class="content">
+<a class="image" href="img/aa-image2.png"><img src="img/aa-image2.png" alt="AjaxAnywhere request life cycle" width="381"></a>
+</div>
+<div class="title">Figure 2 - AjaxAnywhere request life cycle</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installation">Installation</h3>
+<div id="coordinates" class="ulist">
+<ul>
+<li>
+<p>Add the AjaxAnywhere library dependency:</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079938.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p>Register the AjaxAnywhere filter in your <strong>web.xml</strong>: it is important to
+register this filter before any other filter that is likely to modify
+the response content (e.g Sitemesh, …):</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5080030.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p>Import jQuery (1.7+) and AjaxAnywhere Javascript libraries:</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5080080.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are not using a Servlet 3.0 compliant Application Server (like
+Tomcat 7.x), then you need to register the following servlet declaration
+in order to be able to retrieve the AjaxAnywhere Javascript file
+jquery-aa.js. This is due to the fact that AjaxAnywhere is using the
+<a href="http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/" target="_blank">
+Servlet 3.0 mechanism to serve static resources from within a JAR file</a>:</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5080167.js"></script>
+</div>
+<div class="sect2">
+<h3 id="_how_to_strong_ajaxify_strong_page_elements">How to <strong>ajaxify</strong> page elements</h3>
+<div class="paragraph">
+<p>Just add a new attribute called <code>aa-refresh-zones</code>, with a comma
+separated list of names of the <strong>zones</strong> you want to refresh, to any
+<strong>form</strong>, <strong>input</strong>, <strong>button</strong>,<strong>select</strong> or <strong>anchor element</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>&lt;form …&gt;</code></strong>: this will automatically "ajaxify" all the submits from
+within the form
+(<a href="http://www.ajaxanywhere.com/action/examples#example1">working example</a>):</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079302.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>&lt;input type="submit" …&gt;</code>, <code>&lt;input type="image" …&gt;</code>, <code>&lt;button
+type="submit" …&gt;</code></strong>: this way you can specify more fine grained behavior
+refresh zones depending upon the clicked button within a form. You don’t
+need to ajaxify the form if you ajaxify the individual elements within
+the form. The <strong>refresh zones specified in a submit element will always
+override those specified in the form</strong>
+(<a href="http://www.ajaxanywhere.com/action/examples#example2">working example</a>):</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079390.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>&lt;select …&gt;</code></strong>: you can also trigger an Ajax request when the selected
+value changes in a drop-down list
+(<a href="http://www.ajaxanywhere.com/action/examples#example3">working example</a>):</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079417.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>&lt;a href="…" …&gt;</code></strong>: without requiring a form scope, <strong>you can also
+"ajaxify" any link within your page</strong>
+(<a href="http://www.ajaxanywhere.com/action/examples#example4">working example</a>):</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079674.js"></script>
+</div>
+<div class="sect2">
+<h3 id="_mark_the_zones_to_refresh_in_your_page">Mark the zones to refresh in your page</h3>
+<div class="paragraph">
+<p>It is as simple as:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>declaring the AjaxAnywhere taglib in your JSP template:</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079807.js"></script>
+<div class="ulist">
+<ul>
+<li>
+<p>and embed the content you want to refresh within the AjaxAnywhere tag:</p>
+</li>
+</ul>
+</div>
+<script src="https://gist.github.com/aruizca/5079843.js"></script>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_f_a_q">F.A.Q.</h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="_where_can_i_download_the_library">Where can I download the library?</h4>
+<div class="paragraph">
+<p>We highly recommend that you use a dependency manager like Maven, Gradle
+or Apache Ivy and use the Maven coordinates explained
+<a href="#coordinates">above</a>. But if you are stuck in an awful legacy
+project and you want to make it look nicer with AjaxAnywhere, then you
+can download the library from the
+<a href="https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~" target="_blank">AjaxAnywhere
+Maven repository hosted by Sonatype</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_can_i_display_a_spinner_or_any_other_notification_mechanism_while_the_ajax_request_is_processed">How can I display a spinner or any other notification mechanism while the Ajax request is processed?</h4>
+<div class="paragraph">
+<p>Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you
+just need to register an event handler using the
+<code><a href="http://api.jquery.com/ajaxStart/" target="_blank">jQuery ajaxStart()</a></code> method and
+implement the behavior you want. Next there is an example that shows how
+to do it:</p>
+</div>
+<script src="https://gist.github.com/aruizca/5139667.js"></script>
+</div>
+<div class="sect3">
+<h4 id="_is_there_any_way_to_identify_an_ajaxanywhere_ajax_request_at_server_side">Is there any way to identify an AjaxAnywhere Ajax request at server side?</h4>
+<div class="paragraph">
+<p>Sure you can! In fact one very common use case in a controller is to
+perform either a forward or a redirect depending on if it was an Ajax
+request or not. AjaxAnywhere provides the static
+<strong>AAUtils.isAjaxAnywhereRequest(request)</strong> method for your convenience:</p>
+</div>
+<script src="https://gist.github.com/aruizca/5139808.js"></script>
+</div>
+<div class="sect3">
+<h4 id="_what_are_the_advantages_of_using_ajaxanywhere">What are the advantages of using AjaxAnywhere?</h4>
+<div class="paragraph">
+<p>Just three words: <strong>simplicity, productivity and maintainability</strong>. For
+most of the use cases that a developer can face, AjaxAnywhere is the
+<strong>easiest</strong> and <strong>most cost-effective</strong> way to implement Ajax enabled web
+applications.<br></p>
+</div>
+<div class="paragraph">
+<p>You can also implement AjaxAnywhere in your legacy projects without
+making any change to your controller layer. It also makes it easier to
+implement graceful degradation or continued enhancement to your UI so
+you can meet you accessibility requirements without crippling the UX.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_are_there_any_inconveniences">Are there any inconveniences?</h4>
+<div class="paragraph">
+<p>Although AjaxAnywhere impact on response time is negligible for the vast
+majority of use cases that we all developers have to deal with on daily
+basis, but there could be certain scenarios where 10ms per request
+must be taken into consideration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_i_am_still_stuck_in_jdk_1_4_can_i_still_use_ajaxanywhere">I am still stuck in JDK 1.4, can I still use AjaxAnywhere?</h4>
+<div class="paragraph">
+<p>We feel so sorry for you mate… what can we do? Oh yeah! we created a
+profile in the AjaxAnywhere library pom file so you can download the
+source code, and package your own JDK 1.4 compatible JAR. Once you pull
+the code, execute the following Maven command in the AjaxAnywhere Core
+folder (not the parent project folder):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn package -P1.4</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_external_dependencies_does_ajaxanywhere_have">What external dependencies does AjaxAnywhere have?</h4>
+<div class="paragraph">
+<p>None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container.<br>
+The application logging is performed with JUL (Java Util Logging).<br>
+<br>
+At client side though you will need jQuery 1.7+, although <strong>jQuery 1.9.x</strong>
+is recommended.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_if_i_want_to_bridge_the_jul_based_traces_to_slf4j">What if I want to bridge the JUL based traces to SLF4J?</h4>
+<div class="paragraph">
+<p>AjaxAnywhere includes a ServletContextListener implementation to do
+that. Just add it to your web.xml as follows:<br></p>
+</div>
+<script src="https://gist.github.com/aruizca/5080373.js"></script>
+</div>
+</div>
+</div>
+        </div>
+        <div class="col-md-3">
+            <div id="toc"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <footer id="footer">
+            <div class="col-md-5">
+                <span>Sponsored by:</span>
+                <a href="http://www.nerdErg.com" target="_nerdErg">
+                    <img class="logo" alt="nerdErg logo" src="img/nerderg-logo.png"/>
+                    <img class="name" alt="nerdErg - harness the power of the nerd" src="img/nerderg-text.png">
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <span>Site powered by:</span>
+                <ul id="tools-list">
+                    <li class="jbake"><a href="http://jbake.org/" target="_blank" title="jBake website">jBake</a></li>
+                    <li class="asciidoctor"><a href="http://asciidoctor.org/" target="_blank" title="asciidoctor website">Asciidoctor</a></li>
+                    <li class="webjars"><a href="http://www.webjars.org" target="_blank" title="Webjars website">Webjars</li>
+                    <li class="gradle"><a href="https://gradle.org/" target="_blank" title="Gradle website">Gradle</a></li>
+                </ul>
+            </div>
+
+            <div id="social" class="col-md-3">
+                <span>Copyright &copy; 2015 Angel Ruiz</span>
+                <div class="social">
+                    <ul class="social-icons icon-circle list-unstyled list-inline icon-rotate">
+                        <li> <a href="https://www.linkedin.com/in/angelruiz" target="_blank" title="Angel's LinkedIn page"><i class="fa fa-linkedin"></i></a></li>
+                        <li> <a href="https://github.com/aruizca" target="_blank" title="Angel's GitHub repository"><i class="fa fa-github"></i></a></li>
+                        <li> <a href="https://twitter.com/aruizca" target="_blank" title="Angel's Twiiter account"><i class="fa fa-twitter"></i></a></li>
+                        <li> <a href="http://aruizca.com" target="_blank" title="Angel's Blog"><i class="fa fa-male"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/google-analytics.js"></script>
+
+<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendor/highlightjs/highlight.min.js"></script>
+<script src="vendor/jquery.tocify.js/js/jquery.tocify.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+</body>
+</html>

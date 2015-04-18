@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JBake</title>
+    <link>http://ajaxanywhere.com</link>
+    <atom:link href="http://ajaxanywhere.com/feed.xml" rel="self" type="application/rss+xml" />
+    <description>JBake Bootstrap Template</description>
+    <language>en-gb</language>
+    <pubDate>Sat, 18 Apr 2015 15:19:25 +1000</pubDate>
+    <lastBuildDate>Sat, 18 Apr 2015 15:19:25 +1000</lastBuildDate>
+
+    
+    <item>
+      <title>null</title>
+      <link>http://ajaxanywhere.com/blog/20150113.html</link>
+      <pubDate>Tue, 13 Jan 2015 00:00:00 +1100</pubDate>
+      <guid isPermaLink="false">blog/20150113.html</guid>
+      <description>
+      &lt;p&gt;Works are underway for version 2.1. This release will include quite a few new features. Stay tuned...&lt;/p&gt;
+
+	  </description>
+    </item>
+    
+    <item>
+      <title>null</title>
+      <link>http://ajaxanywhere.com/blog/20130313.html</link>
+      <pubDate>Wed, 13 Mar 2013 00:00:00 +1100</pubDate>
+      <guid isPermaLink="false">blog/20130313.html</guid>
+      <description>
+      &lt;p&gt;First version 2.0 has been released.&lt;/p&gt;
+
+	  </description>
+    </item>
+    
+
+  </channel> 
+</rss>
