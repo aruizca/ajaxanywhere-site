@@ -74,8 +74,15 @@ task('webjars resources extraction', type: Copy) {
     }
 }
 
+task('cname', type: Copy) {
+    copy {
+        from file("${jbake.input}/assets/CNAME")
+        into file("${buildDir}/jbake")
+    }
+}
+
 task publish(type: GradleBuild) {
-    dependsOn 'jbake'
+    dependsOn 'jbake', 'cname'
     buildFile = 'publish.gradle'
     tasks = ['publishGhPages']
 }
