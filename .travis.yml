@@ -6,3 +6,6 @@ branches:
   - master
 script:
 - gradle publish --stacktrace --info
+env:
+  global:
+    secure: Av+4GwANH838dgVS8/AP5TrfNdosewUHJyXQ+1dh6GHXoMpxWkFQedDDVkaz1xqj4mYPIT6F/pzQO2VsP3ULX5u7yKu7xypIeaU1Hlkc/9iBC01tODT7vY2xt//sHPEP53bWtJn+qVyECQp0t5pLm9WGsAWUfEMyPnP57P2axbU=
