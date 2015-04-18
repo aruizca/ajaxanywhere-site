@@ -9,14 +9,15 @@ buildscript {
         classpath 'me.champeau.gradle:jbake-gradle-plugin:0.2'
         classpath 'org.jbake:jbake-core:2.3.2'
         classpath 'org.pegdown:pegdown:1.4.2'
-//        classpath 'org.asciidoctor:asciidoctor-java-integration:0.1.4'
         classpath 'org.asciidoctor:asciidoctorj:1.5.2'
+        classpath 'com.bluepapa32:gradle-watch-plugin:0.1.5'
     }
 }
 
 apply plugin: 'me.champeau.jbake'
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'com.bluepapa32.watch'
 
 jbake {
     dependsOn 'cleanBuildDir','webjars resources extraction'
@@ -74,8 +75,21 @@ task('webjars resources extraction', type: Copy) {
     }
 }
 
+task publish(type: GradleBuild) {
+    dependsOn 'jbake'
+    buildFile = 'publish.gradle'
+    tasks = ['publishGhPages']
+}
+
 task cleanBuildDir(type: Delete) {
     delete "build"
 }
 
+watch {
 
+    resources {
+        files fileTree('jbake').exclude('assets/vendor/**/*')
+        tasks 'jbake'
+    }
+
+}

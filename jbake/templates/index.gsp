@@ -24,21 +24,21 @@
                 <img src="img/AjaxAnywhere-logo.png" alt="AjaxAnywhere logo">
                 <div class="carousel-caption">
                     <h4>AjaxAnywhere</h4>
-                    <p>is an <strong>Open Source</strong> Java Ajax framework that enables the developer to <strong>declaratively add async server side rendering and page refresh without any Javascript coding</strong>.</p>
+                    <p>is an <strong>Open Source declarative Ajax framework the JVM</strong>. It enables the developer to <strong>provide async server side rendering and page refresh without Javascript coding</strong>.</p>
                 </div>
             </div>
             <div class="item">
                 <img src="img/declarative_vs_imperative.png" alt="Declarative vs Imperative">
                 <div class="carousel-caption">
                     <h4>Declarative approach</h4>
-                    <p>asfdasdfasdf</p>
+                    <p>It allows for more readable and less error prone code by removing all the boiler plate Javascript that is usually involved. Therefore making the developer more productive.</p>
                 </div>
             </div>
             <div class="item">
                 <img src="img/features.png" alt="AjaxAnywheres features" usemap="#frameworks-map">
                 <div class="carousel-caption">
-                    <h4>Simplicity, Productivity and Maintainability</h4>
-                    <p>and it integrates seamlessly with any of your favourite Java or JVM Action based Web Frameworks.</p>
+                    <h4>Web Framework agnostic</h4>
+                    <p>It integrates seamlessly with any of your favourite Java or JVM Action based Web Frameworks. The learning curve is almost none existent.</p>
                 </div>
             </div>
             <div class="item">
@@ -66,14 +66,12 @@
             <div class="panel-body">
                 <div class="col-xs-12">
                     <ul id="news">
+                        <%published_posts.each {post -> %>
                         <li class="news-item">
-                            <h4>13/03/2013</h4>
-                            <p>First version 2.0 has been released.</p>
+                            <h4>${post.date.format("dd/MM/yyyy")}</h4>
+                            ${post.body}
                         </li>
-                        <li class="news-item">
-                            <h4>13/01/2015</h4>
-                            <p>Works are underway for version 2.1. This release will include quite a few new features. Stay tuned...</p>
-                        </li>
+                        <%}%>
                     </ul>
                 </div>
             </div>

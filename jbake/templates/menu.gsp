@@ -24,6 +24,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="https://github.com/nerdErg/AjaxAnywhere" target="_blank">AjaxAnywhere library and examples</a></li>
                         <li><a href="https://github.com/aruizca/ajaxanywhere-site" target="_blank">AjaxAnywhere site</a></li>
+                        <li><a href="https://github.com/nerdErg/AjaxAnywhere-grails-plugin" target="_blank">AjaxAnywhere Grails plugin</a></li>
                     </ul>
                 </li>
             </ul>
