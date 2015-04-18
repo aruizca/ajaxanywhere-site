@@ -4,8 +4,13 @@ jdk:
 branches:
   only:
   - master
+before_script:
+- git config --global user.email "aruizca@gmail.com"
+- git config --global user.name "aruizca"
 script:
+- git config credential.helper "store --file=.git/credentials"
+- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 - gradle publish --stacktrace --info
 env:
   global:
-    secure: Av+4GwANH838dgVS8/AP5TrfNdosewUHJyXQ+1dh6GHXoMpxWkFQedDDVkaz1xqj4mYPIT6F/pzQO2VsP3ULX5u7yKu7xypIeaU1Hlkc/9iBC01tODT7vY2xt//sHPEP53bWtJn+qVyECQp0t5pLm9WGsAWUfEMyPnP57P2axbU=
+    secure: R7sqzyyixVt3kpxS68yEnE9Bt/D8HcCDNrT8Svc7u5nwgnOjBVIU4LbVyHtvejLQ/wKQDu0eS2u+YiLURaoOTf1DROA4dA8pkYl7U2Un1V0ue5schN32NI7A7Tep7BVK2tPJKptbGmWcI7duK9nJfM6XJFU1IxYr3KGelnQL3Tk=
