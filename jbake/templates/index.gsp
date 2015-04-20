@@ -24,14 +24,14 @@
                 <img src="img/AjaxAnywhere-logo.png" alt="AjaxAnywhere logo">
                 <div class="carousel-caption">
                     <h4>AjaxAnywhere</h4>
-                    <p>is an <strong>Open Source declarative Ajax framework the JVM</strong>. It enables the developer to <strong>provide async server side rendering and page refresh without Javascript coding</strong>.</p>
+                    <p>is an <strong>Open Source declarative Ajax framework for the JVM</strong>. It enables the developer to <strong>provide async server side rendering and page refresh without Javascript coding</strong>.</p>
                 </div>
             </div>
             <div class="item">
                 <img src="img/declarative_vs_imperative.png" alt="Declarative vs Imperative">
                 <div class="carousel-caption">
                     <h4>Declarative approach</h4>
-                    <p>It allows for more readable and less error prone code by removing all the boiler plate Javascript that is usually involved. Therefore making the developer more productive.</p>
+                    <p>It allows for more readable, more maintainable and less error prone code by removing all the boiler plate Javascript, therefore making the developer more happy :-) and productive.</p>
                 </div>
             </div>
             <div class="item">
