@@ -2,6 +2,7 @@ html,
 body {
     /* The html and body elements cannot have any padding or margin. */
     font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    padding-bottom: 1em;
 }
 
 
@@ -76,35 +77,6 @@ a.navbar-brand {
     top: 40% !important;
 }
 
-#footer {
-    text-align: left;
-    padding-right: 0;
-    padding-left: 0;
-    vertical-align: middle;
-    padding-top: 20px;
-    border-top: solid 1px #d3d3d3;
-    background-color: #ffffff;
-}
-
-#footer span {
-    display: block;
-    font-family: 'Special Elite', cursive;
-    font-size: 1.2em;
-    margin-bottom: .5em;
-}
-
-#footer img.logo {
-    width: 120px;
-}
-
-#footer img.name {
-    width: 230px;
-}
-
-#footer a:hover {
-    text-decoration: none;
-}
-
 .pagination a {
     color: #555;
 }
@@ -175,8 +147,36 @@ a.navbar-brand {
     margin-top: 1em;
 }
 
+/***** Footer *****/
+#footer {
+    text-align: left;
+    padding: 20px 0 20px;
+    vertical-align: middle;
+    border-top: solid 1px #d3d3d3;
+    background-color: #ffffff;
+}
+
+#footer span {
+    display: block;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.2em;
+    margin-bottom: .5em;
+}
+
+#footer img.logo {
+    width: 120px;
+}
+
+#footer img.name {
+    width: 230px;
+}
+
+#footer a:hover {
+    text-decoration: none;
+}
+
 #tools-list {
-    list-style-type: none;
+    list-style-type: none !important;
     padding: 0;
     margin: 0;
     columns: 2;
@@ -220,8 +220,8 @@ a.navbar-brand {
 }
 
 .list-unstyled {
-    padding-left: 0;
-    list-style: none;
+    padding: 0;
+    list-style-: none;
 }
 .list-inline li {
     display: inline-block;
