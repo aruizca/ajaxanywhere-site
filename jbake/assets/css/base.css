@@ -147,6 +147,10 @@ a.navbar-brand {
     margin-top: 1em;
 }
 
+pre code.hljs {
+    font-size: .9em;
+}
+
 /***** Footer *****/
 #footer {
     text-align: left;
