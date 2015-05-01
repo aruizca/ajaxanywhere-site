@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>css/asciidoctor.css" rel="stylesheet">
-    <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/highlightjs/styles/default.min.css" rel="stylesheet">
+    <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/highlightjs/styles/github.min.css" rel="stylesheet">
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
     <link href="<% if (content.rootpath) { %> ${content.rootpath}<% } else { %><% } %>vendor/Magnific-Popup/magnific-popup.css" rel="stylesheet">
     <% include "header.gsp" %>

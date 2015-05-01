@@ -2,32 +2,37 @@
 :jbake-tags: projects, jlangdetect, deck2pdf, teamcity, jbake, groovy
 :jbake-status: published
 
+:icons: font
+:iconfont-remote!:
+:linkattrs
+
+
 = Documentation
 
 == What is it?
 
-*AjaxAnywhere (reloaded)* is an *Open Source* declarative Ajax framework for the JVM. It enables the developer to **provide async server side rendering and page refresh without Javascript coding**.
+*AjaxAnywhere (reloaded)* is an *Open Source* declarative Ajax framework for the JVM. It enables the developer to *provide async server side rendering and page refresh without Javascript coding*.
 
-This library is a fork of the ancient and abandoned http://ajaxanywhere.sourceforge.net/[AjaxAnywhere] library hosted in
+This library is a fork of the ancient and abandoned http://ajaxanywhere.sourceforge.net/[AjaxAnywhere^] library hosted in
 SourceForge to add new features like:
 
 * Declarative programming style via HTML5 custom elements markup.
 * *The developer does not need to write any Javascript code.* You just
 need to include the AjaxAnywhere Javascript file in your page and it
 will do the rest for you!!
-* AjaxAnywhere Javascript file now *relies on jQuery* to implement all
+* AjaxAnywhere client side javascript code now *relies on jQuery* to implement all
 the required features.
-* Code base refactored aiming for simplification.
+* Code base refactored aiming for simplification and speed.
 * There are no external Java dependencies.
-* HTML parsing implementation does not rely on the Java SE HTML anymore. In fact no HTML parser is used now.
-* JSF support has been dropped, because a similar,but more cumbersome idea is already built-in since the http://java.dzone.com/articles/ajax-jsf-joined[JSF 2.0 spec].
+* HTML parsing implementation does not rely on the Java SE HTML anymore. In fact no HTML parser is used now. Just plain old String.substring method is used.
+* JSF support has been dropped, because a similar but more cumbersome idea is already built-in within http://java.dzone.com/articles/ajax-jsf-joined[the JSF spec since version 2.0^].
 
 *AjaxAnywhere continues to be a PAGE or PAGE FRAGMENT oriented
 framework* and not a component framework. So don’t expect to find "yet
 another autocomplete component".
 
 You can see didactic working
-**http://examples.ajaxanywhere.com[EXAMPLES HERE]**.
+*http://examples.ajaxanywhere.com[EXAMPLES HERE^]*.
 
 == How does it work?
 
@@ -56,24 +61,26 @@ image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Fi
 
 == Usage
 
-=== Installation
+=== Generic Installation
 
 [#coordinates]
 * Add the AjaxAnywhere library dependency:
 
-```
+[source,xml]
+----
 <dependency>
   <groupId>com.nerderg.ajaxanywhere</groupId>
   <artifactId>ajaxanywhere</artifactId>
   <version>2.1</version>
 </dependency>
-```
+----
 
-* Register the AjaxAnywhere filter in your **web.xml**: it is important to
+* Register the AjaxAnywhere filter in your *web.xml*: it is important to
   register this filter before any other filter that is likely to modify
   the response content (e.g Sitemesh, …):
 
-```
+[source,xml]
+----
 <filter>
     <filter-name>AjaxAnywhere</filter-name>
     <filter-class>com.nerderg.ajaxanywhere.AAFilter</filter-class>
@@ -83,83 +90,170 @@ image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Fi
     <filter-name>AjaxAnywhere</filter-name>
     <servlet-name>MyServlet</servlet-name>
 </filter-mapping>
-```
+----
 
-* Import jQuery (1.7+) and AjaxAnywhere Javascript libraries:
+* Import jQuery (1.7+) and AjaxAnywhere Javascript libraries (example):
 
-++++
-<script src="https://gist.github.com/aruizca/5080080.js"></script>
-++++
+[source,html]
+----
+<script src="<c:url value="/webjars/jquery/1.11.2/jquery.min.js"/>"></script>
+<script src="<c:url value="/webjars/ajaxanywhere/2.1/aa.js"/>"></script>
+----
 
-* If you are not using a Servlet 3.0 compliant Application Server (like
-  Tomcat 7.x), then you need to register the following servlet declaration
-  in order to be able to retrieve the AjaxAnywhere Javascript file
-  jquery-aa.js. This is due to the fact that AjaxAnywhere is using the
-  http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/[
-  Servlet 3.0 mechanism to serve static resources from within a JAR file^]:
+* You can also add a javascript dependency with the http://foliotek.github.io/AjaxQ/[AjaxQ library^] to enable the queueing features (example):
 
-++++
-<script src="https://gist.github.com/aruizca/5080167.js"></script>
-++++
+[source,html]
+----
+<script src="<c:url value="/webjars/AjaxQ/0.0.2/ajaxq.js"/>"></script>
+----
+
+WARNING: Queueing feature only available since *version 2.1*
+
+* If you are using a *noncompliant Servlet 3.x* Application Server (like Tomcat 6.x), then you need to register the http://www.webjars.org/documentation["Webjars servlet 2.x add-on"^].
 
 
-=== How to **ajaxify** page elements
+NOTE: This is due to the fact that AjaxAnywhere is using the http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/[Servlet 3.0 mechanism to serve static resources from within a JAR file^] following the http://www.webjars.org[WebJars^] convention:
 
-Just add a new attribute called `aa-refresh-zones`, with a comma
-separated list of names of the *zones* you want to refresh, to any
-**form**, **input**, **button**,*select* or **anchor element**.
+=== How to declare AjaxAnywhere triggers
 
-* **`<form …>`**: this will automatically "ajaxify" all the submits from
+These elements will trigger the partial page refresh when clicked. AjaxAnywhere defines the following HTML5 custom attributes to declare any "clickable" element as an *AjaxAnywhere trigger*:
+
+[cols="2,1,5a", options="header", width="100%"]
+|===
+|Attribute (AA version)
+|Mandatory
+|Mission
+
+|*aa-refresh-zones* (2.0)
+|yes
+|comma separated list with names of the "zones" you want to refresh.
+
+|*aa-method* (2.1)
+|no
+|HTTP method: GET, POST, ... Form elements default this value to the form method attribute. For links the default is GET.
+
+|*aa-js-before* (2.1)
+|no
+|javascript that will get evaluated before performing the ajax request. Eg: `aa-js-before="loadDynamicaParams();"`
+
+|*aa-js-after* (2.1)
+|no
+|javascript that will get evaluated after performing the ajax request. Eg: `aa-js-before="openModalDialog();"`
+
+|*aa-queue* (2.1)
+|no
+|AjaxQ lib is required for this feature. You would use it if multiple ajax requests have to be performed sequentially for the page refresh to be coherent.
+
+These are the three possible values:
+
+* *true*: to queue ajax request.
+* *abort*: aborts previous ongoing request, and removes any unprocessed requests from the queue.
+* *clear*: removes any unprocessed requests from the queue but lets finish previous ongoing request.
+
+|*aa-href* (2.1)
+|no
+|contains the url to get the relevant content for those elements that unlike the form or links have no standard means to specify a url
+|===
+
+Next are the most common trigger examples which are usually associated with the *form*, *input*, *button*,*select* or *link/anchor* elements:
+
+* *`<form … >`*: this will automatically "ajaxify" all the submits from
 within the form
-(http://www.ajaxanywhere.com/action/examples#example1[working example]):
+(http://examples.ajaxanywhere.com/#example2[working example^]):
 
-++++
-<script src="https://gist.github.com/aruizca/5079302.js"></script>
-++++
+[source,html,options="nowrap"]
+----
+<form action="${action}" method="post" aa-refresh-zones="aaZone1Example1, aaZone2Example1">
+...
+</form>
+----
 
-* **`<input type="submit" …>`, `<input type="image" …>`, `<button
-type="submit" …>`**: this way you can specify more fine grained behavior
-refresh zones depending upon the clicked button within a form. You don’t
-need to ajaxify the form if you ajaxify the individual elements within
-the form. The **refresh zones specified in a submit element will always
-override those specified in the form**
-(http://www.ajaxanywhere.com/action/examples#example2[working example]):
+* *`<input type="submit" … >`, `<input type="image" … >`, `<button
+type="submit" … >`*: this way you can specify more fine grained behavior
+refresh zones depending upon the clicked button within a form.
+(http://examples.ajaxanywhere.com/#example3[working example^]):
 
-++++
-<script src="https://gist.github.com/aruizca/5079390.js"></script>
-++++
 
-* **`<select …>`**: you can also trigger an Ajax request when the selected
-  value changes in a drop-down list
-  (http://www.ajaxanywhere.com/action/examples#example3[working example]):
+[source,html,options="nowrap"]
+----
+<form action="${action}" method="post">
+...
+  <div>
+    <button type="submit" aa-refresh-zones="aaZone1Example2" class="btn btn-primary" name="refreshTextButton" value="Refresh Text">Refresh Text</button>
+    <input type="image" aa-refresh-zones="aaZone1Example2" src="<c:url value='/img/refresh.png'/>" name="refreshTextButton" value="Refresh Text"/>
+    <input type="submit" aa-refresh-zones="aaZone2Example2" class="btn btn-info" name="showCodeButton" value="Show Code"/>
+  </div>
+</form>
+----
 
-++++
-<script src="https://gist.github.com/aruizca/5079417.js"></script>
-++++
+NOTE: The *refresh zones specified in a submit element will always
+override those specified in the form*
 
-* **`<a href="…" …>`**: without requiring a form scope, **you can also
-  "ajaxify" any link within your page**
-  (http://www.ajaxanywhere.com/action/examples#example4[working example]):
+* *`<select … >`*: you can also trigger an Ajax request when the selected
+  value in a drop-down list changes:
+  (http://examples.ajaxanywhere.com/#example4[working example^]):
 
-++++
-<script src="https://gist.github.com/aruizca/5079674.js"></script>
-++++
+[source,html,options="nowrap"]
+----
+<form action="${action}" method="post">
+...
+  <sf:select path="continentCode" aa-refresh-zones="countryZone, capitalZone" id="continentCode">
+      <sf:option value="">-- Select One --</sf:option>
+      <sf:options items="${countryForm.continentsSet}" itemLabel="value" itemValue="key"/>
+  </sf:select>
+...
+</form>
+----
 
-=== Mark the zones to refresh in your page
+* *`<a href="/url" … >`*: without requiring a form scope, *you can also
+  "ajaxify" any link within your page*
+  (http://examples.ajaxanywhere.com/#example5[working example^]):
+
+[source,html,options="nowrap"]
+----
+<a href="<c:url value='/action/examples/4?data=whatever'/>" aa-refresh-zones="codeLayer4">Show Code</a>
+----
+
+=== Mark the 'refresh zones' in your page
 
 It is as simple as: +
 
 * declaring the AjaxAnywhere taglib in your JSP template:
 
-++++
-<script src="https://gist.github.com/aruizca/5079807.js"></script>
-++++
+[source,html,options="nowrap"]
+----
+<%@ taglib uri="http://com.nerderg/ajaxanywhere" prefix="aa" %>
+----
 
 * and embed the content you want to refresh within the AjaxAnywhere tag:
 
-++++
-<script src="https://gist.github.com/aruizca/5079843.js"></script>
-++++
+[source,html,options="nowrap"]
+----
+<aa:zone id="myZone">
+  <!-- Zone Content -->
+  ...
+</aa:zone>
+----
+
+This by default will generate a `<div>` with some special markup:
+
+[source,html,options="nowrap"]
+----
+<div style="display:inline;" id="myZone">
+
+<!-- @end of zone [myZone]@ --></div>
+----
+
+=== New 'refresh zones' features
+Since version 2.1 a few new use cases have been added to the way refresh zones are handled.
+
+==== 1. Everything can be a "refresh zone"
+
+TODO
+
+==== 2. Auto refresh zone at page loading time
+
+TODO
 
 == F.A.Q.
 
@@ -195,7 +289,7 @@ request or not. AjaxAnywhere provides the static
 ++++
 
 ==== What are the advantages of using AjaxAnywhere?
-Just three words: **simplicity, productivity and maintainability**. For
+Just three words: *simplicity, productivity and maintainability*. For
 most of the use cases that a developer can face, AjaxAnywhere is the
 *easiest* and *most cost-effective* way to implement Ajax enabled web
 applications. +
