@@ -4,8 +4,6 @@
 
 :icons: font
 :iconfont-remote!:
-:linkattrs
-
 
 = Documentation
 
@@ -27,7 +25,7 @@ the required features.
 * HTML parsing implementation does not rely on the Java SE HTML anymore. In fact no HTML parser is used now. Just plain old String.substring method is used.
 * JSF support has been dropped, because a similar but more cumbersome idea is already built-in within http://java.dzone.com/articles/ajax-jsf-joined[the JSF spec since version 2.0^].
 
-*AjaxAnywhere continues to be a PAGE or PAGE FRAGMENT oriented
+IMPORTANT: *AjaxAnywhere continues to be a PAGE or PAGE FRAGMENT oriented
 framework* and not a component framework. So don’t expect to find "yet
 another autocomplete component".
 
@@ -61,7 +59,7 @@ image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Fi
 
 == Usage
 
-=== Generic Installation
+=== Installation
 
 [#coordinates]
 * Add the AjaxAnywhere library dependency:
@@ -118,29 +116,35 @@ NOTE: This is due to the fact that AjaxAnywhere is using the http://alexismp.wor
 
 These elements will trigger the partial page refresh when clicked. AjaxAnywhere defines the following HTML5 custom attributes to declare any "clickable" element as an *AjaxAnywhere trigger*:
 
-[cols="2,1,5a", options="header", width="100%"]
+[cols="2,1,1,5a", options="header", width="100%"]
 |===
-|Attribute (AA version)
+|Attribute
+|AA Version
 |Mandatory
 |Mission
 
-|*aa-refresh-zones* (2.0)
+|*aa-refresh-zones*
+|2.0
 |yes
 |comma separated list with names of the "zones" you want to refresh.
 
-|*aa-method* (2.1)
+|*aa-method*
+|2.1
 |no
 |HTTP method: GET, POST, ... Form elements default this value to the form method attribute. For links the default is GET.
 
-|*aa-js-before* (2.1)
+|*aa-js-before*
+|2.1
 |no
 |javascript that will get evaluated before performing the ajax request. Eg: `aa-js-before="loadDynamicaParams();"`
 
-|*aa-js-after* (2.1)
+|*aa-js-after*
+|2.1
 |no
 |javascript that will get evaluated after performing the ajax request. Eg: `aa-js-before="openModalDialog();"`
 
-|*aa-queue* (2.1)
+|*aa-queue*
+|2.1
 |no
 |AjaxQ lib is required for this feature. You would use it if multiple ajax requests have to be performed sequentially for the page refresh to be coherent.
 
@@ -150,7 +154,8 @@ These are the three possible values:
 * *abort*: aborts previous ongoing request, and removes any unprocessed requests from the queue.
 * *clear*: removes any unprocessed requests from the queue but lets finish previous ongoing request.
 
-|*aa-href* (2.1)
+|*aa-href*
+|2.1
 |no
 |contains the url to get the relevant content for those elements that unlike the form or links have no standard means to specify a url
 |===
@@ -225,7 +230,7 @@ It is as simple as: +
 <%@ taglib uri="http://com.nerderg/ajaxanywhere" prefix="aa" %>
 ----
 
-* and embed the content you want to refresh within the AjaxAnywhere tag:
+* and embed the content you want to refresh within the AjaxAnywhere tag `<aa:zone id="someid"/>`:
 
 [source,html,options="nowrap"]
 ----
@@ -235,7 +240,7 @@ It is as simple as: +
 </aa:zone>
 ----
 
-This by default will generate a `<div>` with some special markup:
+By default this will generate a `<div/>` with some special markup:
 
 [source,html,options="nowrap"]
 ----
@@ -244,89 +249,215 @@ This by default will generate a `<div>` with some special markup:
 <!-- @end of zone [myZone]@ --></div>
 ----
 
-=== New 'refresh zones' features
-Since version 2.1 a few new use cases have been added to the way refresh zones are handled.
+=== New 'refresh zones' features explained
+Since version 2.1 a few new use cases have been added to the way refresh zones are handled. To achieve this we have added a few more attributes to the `<aa:zone/>` taglib.
 
 ==== 1. Everything can be a "refresh zone"
 
-TODO
+As explained previously, a refresh zone is encapsulated within a `<div/>`. That means the refresing zones were limited to be declared outside first level block elements (eg: `<div/>` or `<table/>`), but not other nested or inline elements like a `<tbody/>` or `<tr/>`. Now using the attribute `tag` we can specify what HTML5 element should be rendered.
+
+So given this template:
+[source,html,options="nowrap"]
+----
+<table>
+<aa:zone id="tbodyZone" tag="tbody"> <1>
+  <tr>
+  ...
+  </tr>
+  ...
+</aa:zone>
+...
+</table>
+----
+<1> Check `tag` attribute in the table bellow
+
+the following will be rendered:
+
+[source,html,options="nowrap"]
+----
+<table>
+<tbody id="tbodyZone">
+  <tr>
+  ...
+  </tr>
+  ...
+<!-- @end of zone [tbodyZone]@ --></tbody>
+...
+</table>
+----
+
+NOTE: When using the `tag` attribute the refreshed content will *replace* the declared zone unlike the default behaviour which would *append* the content to the generated `<div/>` container. See https://api.jquery.com/html/[$.html()] vs https://api.jquery.com/replaceWith/[$.replaceWith()]
 
 ==== 2. Auto refresh zone at page loading time
 
-TODO
+For those times where you want to defer the loading of a particular fragment to once the parent page is loaded, we provide the attribute `href`. There you can specify the location of the content you want to include.
+
+[source,html,options="nowrap"]
+----
+<aa:zone id="deferredLoadingZone" href="/some-url"> <1>
+</aa:zone>
+----
+<1> Check `href` attribute in the table bellow
+
+=== Taglib <aa:zone /> attributes
+
+[cols="2,1,1,5", options="header", width="100%"]
+|===
+|Name
+|AA Version
+|Mandatory
+|Description
+
+|*id*
+|2.0
+|Yes
+|Unique identifier for the refresh zone within the page.
+
+|*tag*
+|2.1
+|No
+|Html5 inline or block element tag to be generated instead of the default '<div/>' block tag
+
+|*href*
+|2.1
+|No
+|URL with the content that will get refresh at page load time.
+
+|*jsBefore*
+|2.1
+|No
+|javascript that will get evaluated before performing the ajax request.
+
+|*jsAfter*
+|2.1
+|No
+|javascript that will get evaluated after performing the ajax request.
+|===
+
+WARNING: `jsBefore` and `jsAfter` attributes are only evaluated if `href` has been used.
+
+== Grails plugin
+
+We have developed a Grails plugin that makes using AjaxAnywhere even easier and more straight forward.
+
+=== Installation
+Add the plugin dependency in your `BuildConfig.groovy` file:
+
+[source,groovy,options="nowrap"]
+----
+compile ":ajaxanywhere:1.0"
+----
+That's it! It is quite simple compared to the general installation process that we described previously, isn't it?. That's the beauty of Grails plugins...one of them anyway.
+
+=== Usage
+
+Apart from the fact that you don't need to declare the tag library, you can refer to the general Usage section above. You also need to take into consideration the following guidelines depending on the layout manager you are using.
+
+==== For the Resources Plugin
+
+If you are using the http://grails.org/plugin/resources[Resources Plugin], you will need import the `ajaxanywhere` resources module either in your resources file:
+
+[source,groovy,options="nowrap"]
+----
+modules = {
+...
+  myModule {
+    dependsOn 'ajaxanywhere'
+
+  }
+...
+}
+----
+
+or in the page you are planning to use it:
+
+[source,html,options="nowrap"]
+----
+<r:require modules="ajaxanywhere"/>
+----
+
+WARNING: There is a limitation with the Resources Plugin that makes impossible to perform a full page refresh, so the development will have to be oriented to refresh page fragments, which is what most of the time you do anyway.
+
+==== For Assets Pipeline Plugin
+
+If you using the Assets Pipeline Plugin -> TODO
 
 == F.A.Q.
 
 ==== Where can I download the library?
-We highly recommend that you use a dependency manager like Maven, Gradle
-or Apache Ivy and use the Maven coordinates explained
-<<coordinates,above>>. But if you are stuck in an awful legacy
-project and you want to make it look nicer with AjaxAnywhere, then you
-can download the library from the
-link:++https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~++[AjaxAnywhere
-Maven repository hosted by Sonatype^].
+We highly recommend that you use a dependency manager like Maven, Gradle or Apache Ivy and use the Maven coordinates explained <<coordinates,above>>. But if you are stuck in an awful legacy project and you want to make it look nicer with AjaxAnywhere, then you can download the library from the link:++https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~++[AjaxAnywhere Maven repository hosted by Sonatype^].
 
 ==== How can I display a spinner or any other notification mechanism while the Ajax request is processed?
-Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you
-just need to register an event handler using the
-`link:http://api.jquery.com/ajaxStart/[jQuery ajaxStart()^]` method and
-implement the behavior you want. Next there is an example that shows how
-to do it:
+Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you just need to register an event handler using the `link:http://api.jquery.com/ajaxStart/[jQuery ajaxStart()^]` method and implement the behavior you want. Next there is an example that shows how to do it:
 
-++++
-<script src="https://gist.github.com/aruizca/5139667.js"></script>
-++++
+[source,javascript,options="nowrap"]
+----
+var x,y;
+
+$(function () {
+  $('body').mousemove(function (e) {
+    x = e.pageX;
+    y = e.pageY;
+  });
+
+  $(document).ajaxStart(
+    function (e) {
+      $('#spinner').css('left', x);
+      $('#spinner').css('top', y).show();
+      $('body').css('cursor', 'wait');
+    }).ajaxComplete(function () {
+      $('#spinner').hide();
+      $('body').css('cursor', 'auto');
+    });
+});
+----
 
 ==== Is there any way to identify an AjaxAnywhere Ajax request at server side?
 
-Sure you can! In fact one very common use case in a controller is to
-perform either a forward or a redirect depending on if it was an Ajax
-request or not. AjaxAnywhere provides the static
-*AAUtils.isAjaxAnywhereRequest(request)* method for your convenience:
+Sure you can! In fact one very common use case in a controller is to perform either a forward or a redirect depending on if it was an Ajax request or not. AjaxAnywhere provides the static *AAUtils.isAjaxAnywhereRequest(request)* method for your convenience:
 
-++++
-<script src="https://gist.github.com/aruizca/5139808.js"></script>
-++++
+[source,java,options="nowrap"]
+----
+...
+if (AAUtils.isAjaxAnywhereRequest(request) {
+  // Perform request forward
+} else {
+  // Perform response redirect
+}
+----
 
 ==== What are the advantages of using AjaxAnywhere?
-Just three words: *simplicity, productivity and maintainability*. For
-most of the use cases that a developer can face, AjaxAnywhere is the
-*easiest* and *most cost-effective* way to implement Ajax enabled web
-applications. +
+To Modify
 
-You can also implement AjaxAnywhere in your legacy projects without
-making any change to your controller layer. It also makes it easier to
-implement graceful degradation or continued enhancement to your UI so
-you can meet you accessibility requirements without crippling the UX.
+Just three words: *simplicity, productivity and maintainability*. For most of the use cases that a developer can face, AjaxAnywhere is the *easiest* and *most cost-effective* way to implement Ajax enabled web applications.
+
+You can also implement AjaxAnywhere in your legacy projects without making any change to your controller layer. It also makes it easier to implement graceful degradation or continued enhancement to your UI so you can meet you accessibility requirements without crippling the UX.
 
 ==== Are there any inconveniences?
-Although AjaxAnywhere impact on response time is negligible for the vast
-majority of use cases that we all developers have to deal with on daily
-basis, but there could be certain scenarios where 10ms per request
-must be taken into consideration.
+Although AjaxAnywhere impact on response time is negligible for the vast majority of use cases that we all developers have to deal with on daily basis, but there could be certain scenarios where 10ms per request must be taken into consideration.
 
 ==== I am still stuck in JDK 1.4, can I still use AjaxAnywhere?
-We feel so sorry for you mate… what can we do? Oh yeah! we created a
-profile in the AjaxAnywhere library pom file so you can download the
-source code, and package your own JDK 1.4 compatible JAR. Once you pull
-the code, execute the following Maven command in the AjaxAnywhere Core
-folder (not the parent project folder):
+We feel so sorry for you mate… what can we do? Oh yeah! we created a profile in the AjaxAnywhere library pom file so you can download the source code, and package your own JDK 1.4 compatible JAR. Once you pull the code, execute the following Maven command in the AjaxAnywhere Core folder (not the parent project folder):
 
+[source,options="nowrap"]
 ----
 mvn package -P1.4
 ----
 
 ==== What external dependencies does AjaxAnywhere have?
-None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container. +
-The application logging is performed with JUL (Java Util Logging). +
- +
-At client side though you will need jQuery 1.7+, although *jQuery 1.9.x*
-is recommended.
+None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container. The application logging is performed with JUL (Java Util Logging).
+
+At client side though you will need jQuery 1.7+, but *jQuery 1.9.x* or greater is recommended.
 
 ==== What if I want to bridge the JUL based traces to SLF4J?
-AjaxAnywhere includes a ServletContextListener implementation to do
-that. Just add it to your web.xml as follows: +
+AjaxAnywhere includes a ServletContextListener implementation to do that. Just add it to your web.xml as follows:
 
-++++
-<script src="https://gist.github.com/aruizca/5080373.js"></script>
-++++
+[source,xml,options="nowrap"]
+----
+<!-- Jul to Slf4j Bridge Listener -->
+<listener>
+    <listener-class>
+        com.nerderg.ajaxanywhere.listener.JulToSlf4jBridgeListener
+    </listener-class>
+</listener>
+----
