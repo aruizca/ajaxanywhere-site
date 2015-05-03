@@ -388,7 +388,7 @@ If you using the Assets Pipeline Plugin -> TODO
 We highly recommend that you use a dependency manager like Maven, Gradle or Apache Ivy and use the Maven coordinates explained <<coordinates,above>>. But if you are stuck in an awful legacy project and you want to make it look nicer with AjaxAnywhere, then you can download the library from the link:++https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~++[AjaxAnywhere Maven repository hosted by Sonatype^].
 
 ==== How can I display a spinner or any other notification mechanism while the Ajax request is processed?
-Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you just need to register an event handler using the `link:http://api.jquery.com/ajaxStart/[jQuery ajaxStart()^]` method and implement the behavior you want. Next there is an example that shows how to do it:
+Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you just need to register an event handler using the link:http://api.jquery.com/ajaxStart/[$.ajaxStart()^] method and implement the behavior you want. Next there is an example that shows how to do it:
 
 [source,javascript,options="nowrap"]
 ----
@@ -414,7 +414,7 @@ $(function () {
 
 ==== Is there any way to identify an AjaxAnywhere Ajax request at server side?
 
-Sure you can! In fact one very common use case in a controller is to perform either a forward or a redirect depending on if it was an Ajax request or not. AjaxAnywhere provides the static *AAUtils.isAjaxAnywhereRequest(request)* method for your convenience:
+Sure you can! In fact one very common use case in a controller is to perform either a forward or a redirect depending on if it was an Ajax request or not. AjaxAnywhere provides the static `AAUtils.isAjaxAnywhereRequest(request)` method for your convenience:
 
 [source,java,options="nowrap"]
 ----
