@@ -69,7 +69,7 @@ image::img/aa-image2.png[alt="AjaxAnywhere request life cycle", 381, caption="Fi
 <dependency>
   <groupId>com.nerderg.ajaxanywhere</groupId>
   <artifactId>ajaxanywhere</artifactId>
-  <version>2.1</version>
+  <version>2.1.1</version>
 </dependency>
 ----
 
@@ -427,9 +427,7 @@ if (AAUtils.isAjaxAnywhereRequest(request) {
 ----
 
 ==== What are the advantages of using AjaxAnywhere?
-To Modify
-
-Just three words: *simplicity, productivity and maintainability*. For most of the use cases that a developer can face, AjaxAnywhere is the *easiest* and *most cost-effective* way to implement Ajax enabled web applications.
+The advantages are those that come from using a *declarative style of programming*. By reducing the amount of boiler plate code and homogenizing your code, you instantly improve on these parameters that define how good your code is: *reliability, simplicity, productivity and maintainability*. For most of the use cases that a developer can face, AjaxAnywhere is the *easiest* and *most cost-effective* way to implement Ajax enabled web applications.
 
 You can also implement AjaxAnywhere in your legacy projects without making any change to your controller layer. It also makes it easier to implement graceful degradation or continued enhancement to your UI so you can meet you accessibility requirements without crippling the UX.
 
@@ -461,3 +459,16 @@ AjaxAnywhere includes a ServletContextListener implementation to do that. Just a
     </listener-class>
 </listener>
 ----
+
+== Changelog
+* version *2.1.1* (07/05/2015):
+** Added support for new uses cases by adding more custom HTML5 attributes for AA triggers
+** Added new attributes to the taglib
+** Now any HTML5 element can be a "refreshable" zone.
+** Updated documentation using Asciidoc.
+** Added support for declarative queueing of the Ajax requests.
+** Other minor improvements and bug fixes.
+* version *2.1* (07/05/2015):
+** Bogus release due to versioning mistake. Please skip
+* version *2.0* (13/03/2013):
+** Initital Release
