@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link href="css/asciidoctor.css" rel="stylesheet">
-    <link href="vendor/highlightjs/styles/default.min.css" rel="stylesheet">
+    <link href="vendor/highlightjs/styles/github.min.css" rel="stylesheet">
     <link href="vendor/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
     <link href="vendor/Magnific-Popup/magnific-popup.css" rel="stylesheet">
     
@@ -64,41 +64,57 @@
 <h2 id="_what_is_it">What is it?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>AjaxAnywhere</strong> is an <strong>Open Source</strong> Java Ajax framework that enables the
-developer to <strong>add Ajax behaviour to your web application adding simple
-markup and without any Javascript coding</strong>. This library is a fork of
-the ancient and abandoned
-<a href="http://ajaxanywhere.sourceforge.net/">AjaxAnywhere</a> library hosted in
-SourceForge but with the following improvements:</p>
+<p><strong>AjaxAnywhere (reloaded)</strong> is an <strong>Open Source</strong> declarative Ajax framework for the JVM. It enables the developer to <strong>provide async server side rendering and page refresh without Javascript coding</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This library is a fork of the ancient and abandoned <a href="http://ajaxanywhere.sourceforge.net/" target="_blank">AjaxAnywhere</a> library hosted in
+SourceForge to add new features like:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Declarative programming style via HTML5 custom elements markup.</p>
+</li>
 <li>
 <p><strong>The developer does not need to write any Javascript code.</strong> You just
 need to include the AjaxAnywhere Javascript file in your page and it
 will do the rest for you!!</p>
 </li>
 <li>
-<p>AjaxAnywhere Javascript file now <strong>relies on jQuery</strong> to implement all
+<p>AjaxAnywhere client side javascript code now <strong>relies on jQuery</strong> to implement all
 the required features.</p>
 </li>
 <li>
-<p>Code base has been simplified and a dependency with the Java SE HTML
-parser has been removed.</p>
+<p>Code base refactored aiming for simplification and speed.</p>
 </li>
 <li>
-<p>JSF support has been dropped.<br></p>
+<p>There are no external Java dependencies.</p>
+</li>
+<li>
+<p>HTML parsing implementation does not rely on the Java SE HTML anymore. In fact no HTML parser is used now. Just plain old String.substring method is used.</p>
+</li>
+<li>
+<p>JSF support has been dropped, because a similar but more cumbersome idea is already built-in within <a href="http://java.dzone.com/articles/ajax-jsf-joined" target="_blank">the JSF spec since version 2.0</a>.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>AjaxAnywhere continues to be a <strong>page or page fragment oriented
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<strong>AjaxAnywhere continues to be a PAGE or PAGE FRAGMENT oriented
 framework</strong> and not a component framework. So don’t expect to find "yet
-another autocomplete component".</p>
+another autocomplete component".
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You can see didactic working
-<strong><a href="http://www.ajaxanywhere.com/action/examples">EXAMPLES HERE</a></strong>.</p>
+<strong><a href="http://examples.ajaxanywhere.com" target="_blank">EXAMPLES HERE</a></strong>.</p>
 </div>
 </div>
 </div>
@@ -114,9 +130,7 @@ another autocomplete component".</p>
 <p>Mark the zones to refresh in you JSP template.</p>
 </li>
 <li>
-<p>Add special <code>aa-refresh-zones</code> on all action trigger elements that
-you want to "ajaxify" like: forms, submit buttons, input images or
-even normal links.</p>
+<p>Add special <code>aa-refresh-zones</code> on all action trigger elements that you want to "ajaxify" like: forms, submit buttons, input images or even normal links.</p>
 </li>
 <li>
 <p>You can develop your server code as if you were implementing the
@@ -166,7 +180,15 @@ inserting the content in the page.</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079938.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.nerderg.ajaxanywhere&lt;/groupId&gt;
+  &lt;artifactId&gt;ajaxanywhere&lt;/artifactId&gt;
+  &lt;version&gt;2.1.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -176,83 +198,255 @@ the response content (e.g Sitemesh, …):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5080030.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;filter&gt;
+    &lt;filter-name&gt;AjaxAnywhere&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.nerderg.ajaxanywhere.AAFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;AjaxAnywhere&lt;/filter-name&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+&lt;/filter-mapping&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Import jQuery (1.7+) and AjaxAnywhere Javascript libraries:</p>
+<p>Import jQuery (1.7+) and AjaxAnywhere Javascript libraries (example):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5080080.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-html" data-lang="html">&lt;script src="&lt;c:url value="/webjars/jquery/1.11.2/jquery.min.js"/&gt;"&gt;&lt;/script&gt;
+&lt;script src="&lt;c:url value="/webjars/ajaxanywhere/2.1/aa.js"/&gt;"&gt;&lt;/script&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>If you are not using a Servlet 3.0 compliant Application Server (like
-Tomcat 7.x), then you need to register the following servlet declaration
-in order to be able to retrieve the AjaxAnywhere Javascript file
-jquery-aa.js. This is due to the fact that AjaxAnywhere is using the
-<a href="http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/" target="_blank">
-Servlet 3.0 mechanism to serve static resources from within a JAR file</a>:</p>
+<p>You can also add a javascript dependency with the <a href="http://foliotek.github.io/AjaxQ/" target="_blank">AjaxQ library</a> to enable the queueing features (example):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5080167.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-html" data-lang="html">&lt;script src="&lt;c:url value="/webjars/AjaxQ/0.0.2/ajaxq.js"/&gt;"&gt;&lt;/script&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Queueing feature only available since <strong>version 2.1</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you are using a <strong>noncompliant Servlet 3.x</strong> Application Server (like Tomcat 6.x), then you need to register the <a href="http://www.webjars.org/documentation" target="_blank">"Webjars servlet 2.x add-on"</a>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is due to the fact that AjaxAnywhere is using the <a href="http://alexismp.wordpress.com/2010/04/28/web-inflib-jarmeta-infresources/" target="_blank">Servlet 3.0 mechanism to serve static resources from within a JAR file</a> following the <a href="http://www.webjars.org" target="_blank">WebJars</a> convention:
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_strong_ajaxify_strong_page_elements">How to <strong>ajaxify</strong> page elements</h3>
+<h3 id="_how_to_declare_ajaxanywhere_triggers">How to declare AjaxAnywhere triggers</h3>
 <div class="paragraph">
-<p>Just add a new attribute called <code>aa-refresh-zones</code>, with a comma
-separated list of names of the <strong>zones</strong> you want to refresh, to any
-<strong>form</strong>, <strong>input</strong>, <strong>button</strong>,<strong>select</strong> or <strong>anchor element</strong>.</p>
+<p>These elements will trigger the partial page refresh when clicked. AjaxAnywhere defines the following HTML5 custom attributes to declare any "clickable" element as an <strong>AjaxAnywhere trigger</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 11%;">
+<col style="width: 11%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">AA Version</th>
+<th class="tableblock halign-left valign-top">Mandatory</th>
+<th class="tableblock halign-left valign-top">Mission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-refresh-zones</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>comma separated list with names of the "zones" you want to refresh.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-method</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>HTTP method: GET, POST, &#8230;&#8203; Form elements default this value to the form method attribute. For links the default is GET.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-js-before</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>javascript that will get evaluated before performing the ajax request. Eg: <code>aa-js-before="loadDynamicaParams();"</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-js-after</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>javascript that will get evaluated after performing the ajax request. Eg: <code>aa-js-before="openModalDialog();"</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-queue</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>AjaxQ lib is required for this feature. You would use it if multiple ajax requests have to be performed sequentially for the page refresh to be coherent.</p>
+</div>
+<div class="paragraph">
+<p>These are the three possible values:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>&lt;form …&gt;</code></strong>: this will automatically "ajaxify" all the submits from
+<p><strong>true</strong>: to queue ajax request.</p>
+</li>
+<li>
+<p><strong>abort</strong>: aborts previous ongoing request, and removes any unprocessed requests from the queue.</p>
+</li>
+<li>
+<p><strong>clear</strong>: removes any unprocessed requests from the queue but lets finish previous ongoing request.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>aa-href</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>contains the url to get the relevant content for those elements that unlike the form or links have no standard means to specify a url</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Next are the most common trigger examples which are usually associated with the <strong>form</strong>, <strong>input</strong>, <strong>button</strong>,<strong>select</strong> or <strong>link/anchor</strong> elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>&lt;form … &gt;</code></strong>: this will automatically "ajaxify" all the submits from
 within the form
-(<a href="http://www.ajaxanywhere.com/action/examples#example1">working example</a>):</p>
+(<a href="http://examples.ajaxanywhere.com/#example2" target="_blank">working example</a>):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079302.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;form action="${action}" method="post" aa-refresh-zones="aaZone1Example1, aaZone2Example1"&gt;
+...
+&lt;/form&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>&lt;input type="submit" …&gt;</code>, <code>&lt;input type="image" …&gt;</code>, <code>&lt;button
-type="submit" …&gt;</code></strong>: this way you can specify more fine grained behavior
-refresh zones depending upon the clicked button within a form. You don’t
-need to ajaxify the form if you ajaxify the individual elements within
-the form. The <strong>refresh zones specified in a submit element will always
+<p><strong><code>&lt;input type="submit" … &gt;</code>, <code>&lt;input type="image" … &gt;</code>, <code>&lt;button
+type="submit" … &gt;</code></strong>: this way you can specify more fine grained behavior
+refresh zones depending upon the clicked button within a form.
+(<a href="http://examples.ajaxanywhere.com/#example3" target="_blank">working example</a>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;form action="${action}" method="post"&gt;
+...
+  &lt;div&gt;
+    &lt;button type="submit" aa-refresh-zones="aaZone1Example2" class="btn btn-primary" name="refreshTextButton" value="Refresh Text"&gt;Refresh Text&lt;/button&gt;
+    &lt;input type="image" aa-refresh-zones="aaZone1Example2" src="&lt;c:url value='/img/refresh.png'/&gt;" name="refreshTextButton" value="Refresh Text"/&gt;
+    &lt;input type="submit" aa-refresh-zones="aaZone2Example2" class="btn btn-info" name="showCodeButton" value="Show Code"/&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <strong>refresh zones specified in a submit element will always
 override those specified in the form</strong>
-(<a href="http://www.ajaxanywhere.com/action/examples#example2">working example</a>):</p>
-</li>
-</ul>
+</td>
+</tr>
+</table>
 </div>
-<script src="https://gist.github.com/aruizca/5079390.js"></script>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>&lt;select …&gt;</code></strong>: you can also trigger an Ajax request when the selected
-value changes in a drop-down list
-(<a href="http://www.ajaxanywhere.com/action/examples#example3">working example</a>):</p>
+<p><strong><code>&lt;select … &gt;</code></strong>: you can also trigger an Ajax request when the selected
+value in a drop-down list changes:
+(<a href="http://examples.ajaxanywhere.com/#example4" target="_blank">working example</a>):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079417.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;form action="${action}" method="post"&gt;
+...
+  &lt;sf:select path="continentCode" aa-refresh-zones="countryZone, capitalZone" id="continentCode"&gt;
+      &lt;sf:option value=""&gt;-- Select One --&lt;/sf:option&gt;
+      &lt;sf:options items="${countryForm.continentsSet}" itemLabel="value" itemValue="key"/&gt;
+  &lt;/sf:select&gt;
+...
+&lt;/form&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>&lt;a href="…" …&gt;</code></strong>: without requiring a form scope, <strong>you can also
+<p><strong><code>&lt;a href="/url" … &gt;</code></strong>: without requiring a form scope, <strong>you can also
 "ajaxify" any link within your page</strong>
-(<a href="http://www.ajaxanywhere.com/action/examples#example4">working example</a>):</p>
+(<a href="http://examples.ajaxanywhere.com/#example5" target="_blank">working example</a>):</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079674.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;a href="&lt;c:url value='/action/examples/4?data=whatever'/&gt;" aa-refresh-zones="codeLayer4"&gt;Show Code&lt;/a&gt;</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_mark_the_zones_to_refresh_in_your_page">Mark the zones to refresh in your page</h3>
+<h3 id="_mark_the_refresh_zones_in_your_page">Mark the 'refresh zones' in your page</h3>
 <div class="paragraph">
 <p>It is as simple as:<br></p>
 </div>
@@ -263,15 +457,255 @@ value changes in a drop-down list
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079807.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;%@ taglib uri="http://com.nerderg/ajaxanywhere" prefix="aa" %&gt;</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>and embed the content you want to refresh within the AjaxAnywhere tag:</p>
+<p>and embed the content you want to refresh within the AjaxAnywhere tag <code>&lt;aa:zone id="someid"/&gt;</code>:</p>
 </li>
 </ul>
 </div>
-<script src="https://gist.github.com/aruizca/5079843.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;aa:zone id="myZone"&gt;
+  &lt;!-- Zone Content --&gt;
+  ...
+&lt;/aa:zone&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default this will generate a <code>&lt;div/&gt;</code> with some special markup:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;div style="display:inline;" id="myZone"&gt;
+
+&lt;!-- @end of zone [myZone]@ --&gt;&lt;/div&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_refresh_zones_features_explained">New 'refresh zones' features explained</h3>
+<div class="paragraph">
+<p>Since version 2.1 a few new use cases have been added to the way refresh zones are handled. To achieve this we have added a few more attributes to the <code>&lt;aa:zone/&gt;</code> taglib.</p>
+</div>
+<div class="sect3">
+<h4 id="_1_everything_can_be_a_refresh_zone">1. Everything can be a "refresh zone"</h4>
+<div class="paragraph">
+<p>As explained previously, a refresh zone is encapsulated within a <code>&lt;div/&gt;</code>. That means the refresing zones were limited to be declared outside first level block elements (eg: <code>&lt;div/&gt;</code> or <code>&lt;table/&gt;</code>), but not other nested or inline elements like a <code>&lt;tbody/&gt;</code> or <code>&lt;tr/&gt;</code>. Now using the attribute <code>tag</code> we can specify what HTML5 element should be rendered.</p>
+</div>
+<div class="paragraph">
+<p>So given this template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;table&gt;
+&lt;aa:zone id="tbodyZone" tag="tbody"&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+  &lt;tr&gt;
+  ...
+  &lt;/tr&gt;
+  ...
+&lt;/aa:zone&gt;
+...
+&lt;/table&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Check <code>tag</code> attribute in the table bellow</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>the following will be rendered:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;table&gt;
+&lt;tbody id="tbodyZone"&gt;
+  &lt;tr&gt;
+  ...
+  &lt;/tr&gt;
+  ...
+&lt;!-- @end of zone [tbodyZone]@ --&gt;&lt;/tbody&gt;
+...
+&lt;/table&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When using the <code>tag</code> attribute the refreshed content will <strong>replace</strong> the declared zone unlike the default behaviour which would <strong>append</strong> the content to the generated <code>&lt;div/&gt;</code> container. See <a href="https://api.jquery.com/html/">$.html()</a> vs <a href="https://api.jquery.com/replaceWith/">$.replaceWith()</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_2_auto_refresh_zone_at_page_loading_time">2. Auto refresh zone at page loading time</h4>
+<div class="paragraph">
+<p>For those times where you want to defer the loading of a particular fragment to once the parent page is loaded, we provide the attribute <code>href</code>. There you can specify the location of the content you want to include.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;aa:zone id="deferredLoadingZone" href="/some-url"&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+&lt;/aa:zone&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Check <code>href</code> attribute in the table bellow</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_taglib_aa_zone_attributes">Taglib &lt;aa:zone /&gt; attributes</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 11%;">
+<col style="width: 11%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">AA Version</th>
+<th class="tableblock halign-left valign-top">Mandatory</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier for the refresh zone within the page.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Html5 inline or block element tag to be generated instead of the default '&lt;div/&gt;' block tag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>href</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL with the content that will get refresh at page load time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>jsBefore</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javascript that will get evaluated before performing the ajax request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>jsAfter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javascript that will get evaluated after performing the ajax request.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<code>jsBefore</code> and <code>jsAfter</code> attributes are only evaluated if <code>href</code> has been used.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grails_plugin">Grails plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We have developed a Grails plugin that makes using AjaxAnywhere even easier and more straight forward.</p>
+</div>
+<div class="sect2">
+<h3 id="_installation_2">Installation</h3>
+<div class="paragraph">
+<p>Add the plugin dependency in your <code>BuildConfig.groovy</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-groovy" data-lang="groovy">compile ":ajaxanywhere:1.0"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it! It is quite simple compared to the general installation process that we described previously, isn&#8217;t it?. That&#8217;s the beauty of Grails plugins&#8230;&#8203;one of them anyway.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_usage_2">Usage</h3>
+<div class="paragraph">
+<p>Apart from the fact that you don&#8217;t need to declare the tag library, you can refer to the general Usage section above. You also need to take into consideration the following guidelines depending on the layout manager you are using.</p>
+</div>
+<div class="sect3">
+<h4 id="_for_the_resources_plugin">For the Resources Plugin</h4>
+<div class="paragraph">
+<p>If you are using the <a href="http://grails.org/plugin/resources">Resources Plugin</a>, you will need import the <code>ajaxanywhere</code> resources module either in your resources file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-groovy" data-lang="groovy">modules = {
+...
+  myModule {
+    dependsOn 'ajaxanywhere'
+
+  }
+...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or in the page you are planning to use it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-html" data-lang="html">&lt;r:require modules="ajaxanywhere"/&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+There is a limitation with the Resources Plugin that makes impossible to perform a full page refresh, so the development will have to be oriented to refresh page fragments, which is what most of the time you do anyway.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_for_assets_pipeline_plugin">For Assets Pipeline Plugin</h4>
+<div class="paragraph">
+<p>If you using the Assets Pipeline Plugin &#8594; TODO</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -281,92 +715,157 @@ value changes in a drop-down list
 <div class="sect3">
 <h4 id="_where_can_i_download_the_library">Where can I download the library?</h4>
 <div class="paragraph">
-<p>We highly recommend that you use a dependency manager like Maven, Gradle
-or Apache Ivy and use the Maven coordinates explained
-<a href="#coordinates">above</a>. But if you are stuck in an awful legacy
-project and you want to make it look nicer with AjaxAnywhere, then you
-can download the library from the
-<a href="https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~" target="_blank">AjaxAnywhere
-Maven repository hosted by Sonatype</a>.</p>
+<p>We highly recommend that you use a dependency manager like Maven, Gradle or Apache Ivy and use the Maven coordinates explained <a href="#coordinates">above</a>. But if you are stuck in an awful legacy project and you want to make it look nicer with AjaxAnywhere, then you can download the library from the <a href="https://oss.sonatype.org/index.html#nexus-search;gav~com.nerderg.ajaxanywhere~ajaxanywhere~2.0~jar~" target="_blank">AjaxAnywhere Maven repository hosted by Sonatype</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_how_can_i_display_a_spinner_or_any_other_notification_mechanism_while_the_ajax_request_is_processed">How can I display a spinner or any other notification mechanism while the Ajax request is processed?</h4>
 <div class="paragraph">
-<p>Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you
-just need to register an event handler using the
-<code><a href="http://api.jquery.com/ajaxStart/" target="_blank">jQuery ajaxStart()</a></code> method and
-implement the behavior you want. Next there is an example that shows how
-to do it:</p>
+<p>Since AjaxAnywhere delegates on jQuery to perform the Ajax request, you just need to register an event handler using the <a href="http://api.jquery.com/ajaxStart/" target="_blank">$.ajaxStart()</a> method and implement the behavior you want. Next there is an example that shows how to do it:</p>
 </div>
-<script src="https://gist.github.com/aruizca/5139667.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-javascript" data-lang="javascript">var x,y;
+
+$(function () {
+  $('body').mousemove(function (e) {
+    x = e.pageX;
+    y = e.pageY;
+  });
+
+  $(document).ajaxStart(
+    function (e) {
+      $('#spinner').css('left', x);
+      $('#spinner').css('top', y).show();
+      $('body').css('cursor', 'wait');
+    }).ajaxComplete(function () {
+      $('#spinner').hide();
+      $('body').css('cursor', 'auto');
+    });
+});</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_is_there_any_way_to_identify_an_ajaxanywhere_ajax_request_at_server_side">Is there any way to identify an AjaxAnywhere Ajax request at server side?</h4>
 <div class="paragraph">
-<p>Sure you can! In fact one very common use case in a controller is to
-perform either a forward or a redirect depending on if it was an Ajax
-request or not. AjaxAnywhere provides the static
-<strong>AAUtils.isAjaxAnywhereRequest(request)</strong> method for your convenience:</p>
+<p>Sure you can! In fact one very common use case in a controller is to perform either a forward or a redirect depending on if it was an Ajax request or not. AjaxAnywhere provides the static <code>AAUtils.isAjaxAnywhereRequest(request)</code> method for your convenience:</p>
 </div>
-<script src="https://gist.github.com/aruizca/5139808.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">...
+if (AAUtils.isAjaxAnywhereRequest(request) {
+  // Perform request forward
+} else {
+  // Perform response redirect
+}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_what_are_the_advantages_of_using_ajaxanywhere">What are the advantages of using AjaxAnywhere?</h4>
 <div class="paragraph">
-<p>Just three words: <strong>simplicity, productivity and maintainability</strong>. For
-most of the use cases that a developer can face, AjaxAnywhere is the
-<strong>easiest</strong> and <strong>most cost-effective</strong> way to implement Ajax enabled web
-applications.<br></p>
+<p>The advantages are those that come from using a <strong>declarative style of programming</strong>. By reducing the amount of boiler plate code and homogenizing your code, you instantly improve on these parameters that define how good your code is: <strong>reliability, simplicity, productivity and maintainability</strong>. For most of the use cases that a developer can face, AjaxAnywhere is the <strong>easiest</strong> and <strong>most cost-effective</strong> way to implement Ajax enabled web applications.</p>
 </div>
 <div class="paragraph">
-<p>You can also implement AjaxAnywhere in your legacy projects without
-making any change to your controller layer. It also makes it easier to
-implement graceful degradation or continued enhancement to your UI so
-you can meet you accessibility requirements without crippling the UX.</p>
+<p>You can also implement AjaxAnywhere in your legacy projects without making any change to your controller layer. It also makes it easier to implement graceful degradation or continued enhancement to your UI so you can meet you accessibility requirements without crippling the UX.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_are_there_any_inconveniences">Are there any inconveniences?</h4>
 <div class="paragraph">
-<p>Although AjaxAnywhere impact on response time is negligible for the vast
-majority of use cases that we all developers have to deal with on daily
-basis, but there could be certain scenarios where 10ms per request
-must be taken into consideration.</p>
+<p>Although AjaxAnywhere impact on response time is negligible for the vast majority of use cases that we all developers have to deal with on daily basis, but there could be certain scenarios where 10ms per request must be taken into consideration.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_i_am_still_stuck_in_jdk_1_4_can_i_still_use_ajaxanywhere">I am still stuck in JDK 1.4, can I still use AjaxAnywhere?</h4>
 <div class="paragraph">
-<p>We feel so sorry for you mate… what can we do? Oh yeah! we created a
-profile in the AjaxAnywhere library pom file so you can download the
-source code, and package your own JDK 1.4 compatible JAR. Once you pull
-the code, execute the following Maven command in the AjaxAnywhere Core
-folder (not the parent project folder):</p>
+<p>We feel so sorry for you mate… what can we do? Oh yeah! we created a profile in the AjaxAnywhere library pom file so you can download the source code, and package your own JDK 1.4 compatible JAR. Once you pull the code, execute the following Maven command in the AjaxAnywhere Core folder (not the parent project folder):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mvn package -P1.4</pre>
+<pre class="prettyprint highlight nowrap"><code>mvn package -P1.4</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_what_external_dependencies_does_ajaxanywhere_have">What external dependencies does AjaxAnywhere have?</h4>
 <div class="paragraph">
-<p>None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container.<br>
-The application logging is performed with JUL (Java Util Logging).<br>
-<br>
-At client side though you will need jQuery 1.7+, although <strong>jQuery 1.9.x</strong>
-is recommended.</p>
+<p>None whatsoever. You just need a JRE 5+ and a Servlet 2.3+ container. The application logging is performed with JUL (Java Util Logging).</p>
+</div>
+<div class="paragraph">
+<p>At client side though you will need jQuery 1.7+, but <strong>jQuery 1.9.x</strong> or greater is recommended.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_what_if_i_want_to_bridge_the_jul_based_traces_to_slf4j">What if I want to bridge the JUL based traces to SLF4J?</h4>
 <div class="paragraph">
-<p>AjaxAnywhere includes a ServletContextListener implementation to do
-that. Just add it to your web.xml as follows:<br></p>
+<p>AjaxAnywhere includes a ServletContextListener implementation to do that. Just add it to your web.xml as follows:</p>
 </div>
-<script src="https://gist.github.com/aruizca/5080373.js"></script>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;!-- Jul to Slf4j Bridge Listener --&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;
+        com.nerderg.ajaxanywhere.listener.JulToSlf4jBridgeListener
+    &lt;/listener-class&gt;
+&lt;/listener&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changelog">Changelog</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>version <strong>2.1.1</strong> (07/05/2015):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for new uses cases by adding more custom HTML5 attributes for AA triggers</p>
+</li>
+<li>
+<p>Added new attributes to the taglib</p>
+</li>
+<li>
+<p>Now any HTML5 element can be a "refreshable" zone.</p>
+</li>
+<li>
+<p>Updated documentation using Asciidoc.</p>
+</li>
+<li>
+<p>Added support for declarative queueing of the Ajax requests.</p>
+</li>
+<li>
+<p>Other minor improvements and bug fixes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>version <strong>2.1</strong> (07/05/2015):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bogus release due to versioning mistake. Please skip</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>version <strong>2.0</strong> (13/03/2013):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Initital Release</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>

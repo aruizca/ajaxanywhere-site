@@ -147,7 +147,19 @@ a.navbar-brand {
     margin-top: 1em;
 }
 
-/***** Footer *****/
+pre code.hljs {
+    font-size: .8em;
+}
+
+.admonitionblock i.fa {
+    font-size: 3em;
+}
+
+pre code {
+    white-space: pre;
+}
+
+    /***** Footer *****/
 #footer {
     text-align: left;
     padding: 20px 0 20px;
