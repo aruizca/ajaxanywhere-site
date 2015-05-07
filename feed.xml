@@ -6,8 +6,8 @@
     <atom:link href="http://ajaxanywhere.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Thu, 7 May 2015 04:54:45 +0000</pubDate>
-    <lastBuildDate>Thu, 7 May 2015 04:54:45 +0000</lastBuildDate>
+    <pubDate>Thu, 7 May 2015 05:10:19 +0000</pubDate>
+    <lastBuildDate>Thu, 7 May 2015 05:10:19 +0000</lastBuildDate>
 
     
     <item>
@@ -16,7 +16,7 @@
       <pubDate>Thu, 7 May 2015 00:00:00 +0000</pubDate>
       <guid isPermaLink="false">blog/20150507.html</guid>
       <description>
-      &lt;p&gt;&lt;strong&gt;Version 2.1.1 has been released and published&lt;/strong&gt; in Maven central. The documentation has been updated to reflect new features.&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Version 2.1.1 has been released and published&lt;/strong&gt; in Maven central. The documentation has been updated to reflect new features. Grails plugin coming soon.&lt;/p&gt;
 
 	  </description>
     </item>
