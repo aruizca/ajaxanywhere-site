@@ -6,9 +6,20 @@
     <atom:link href="http://ajaxanywhere.com/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 12 May 2015 04:56:06 +0000</pubDate>
-    <lastBuildDate>Tue, 12 May 2015 04:56:06 +0000</lastBuildDate>
+    <pubDate>Tue, 12 May 2015 05:50:19 +0000</pubDate>
+    <lastBuildDate>Tue, 12 May 2015 05:50:19 +0000</lastBuildDate>
 
+    
+    <item>
+      <title>null</title>
+      <link>http://ajaxanywhere.com/blog/20150512.html</link>
+      <pubDate>Tue, 12 May 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/20150512.html</guid>
+      <description>
+      &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://grails.org/plugin/ajaxanywhere&quot; target=&quot;_blank&quot;&gt;AjaxAnywhere Grails plugin 1.0 has been published&lt;/a&gt;&lt;/strong&gt;. There is a section in the documentation that covers it.&lt;/p&gt;
+
+	  </description>
+    </item>
     
     <item>
       <title>null</title>
