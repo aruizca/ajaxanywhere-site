@@ -376,11 +376,29 @@ or in the page you are planning to use it:
 <r:require modules="ajaxanywhere"/>
 ----
 
-WARNING: There is a limitation with the Resources Plugin that makes impossible to perform a full page refresh, so the development will have to be oriented to refresh page fragments, which is what most of the time you do anyway.
+WARNING: There is a limitation with the Resources Plugin that makes impossible to perform a full page refresh, so the development will have to be oriented to refresh page fragments, which is what you do most of the time anyway.
+
+NOTE: At the time of writing I was using the Resources plugin version 1.2.14
 
 ==== For Assets Pipeline Plugin
 
 If you using the Assets Pipeline Plugin -> TODO
+
+=== Version compatibility
+
+[cols="1,1,1", options="header", width="100%"]
+|===
+|AA Grails plugin version
+|AA Version
+|Grails version
+
+|1.0
+|2.1.1
+|1.3.x to 2.x
+
+|===
+
+
 
 == F.A.Q.
 
